@@ -1,19 +1,7 @@
 package PageObjects;
 
-import lombok.Getter;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
-
-import Common.Constant.Constant;
+import Common.Constant.CONSTANT;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends GeneralPage {
@@ -32,15 +20,16 @@ public class LoginPage extends GeneralPage {
     }
 
     public WebElement getTxtUserName() {
-        return Constant.WEBDRIVER.findElement(userName);
+        return CONSTANT.WEBDRIVER.findElement(userName);
     }
 
     public WebElement getTxtPassWord() {
-        return Constant.WEBDRIVER.findElement(passWord);
+        return CONSTANT.WEBDRIVER.findElement(passWord);
     }
 
-    public WebElement getBtnLogin() {
-        return Constant.WEBDRIVER.findElement(btnLogin);
+    public WebElement
+    getBtnLogin() {
+        return CONSTANT.WEBDRIVER.findElement(btnLogin);
     }
 
     public WebElement getTabLogin() {
@@ -48,11 +37,11 @@ public class LoginPage extends GeneralPage {
     }
 
     public WebElement getErrorMessageLogin() {
-        return Constant.WEBDRIVER.findElement(paErorrMessageLogin);
+        return CONSTANT.WEBDRIVER.findElement(paErorrMessageLogin);
     }
 
     public WebElement getTxtMessError() {
-        return Constant.WEBDRIVER.findElement(txtLoginErrorMes);
+        return CONSTANT.WEBDRIVER.findElement(txtLoginErrorMes);
     }
 
     //  Methods

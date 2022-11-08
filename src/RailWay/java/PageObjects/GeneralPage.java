@@ -1,7 +1,7 @@
 package PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import Common.Constant.Constant;
+import Common.Constant.CONSTANT;
 
 public class GeneralPage {
     //            Locator
@@ -16,38 +16,38 @@ public class GeneralPage {
     private final By txtWelComeMes=By.xpath("//div[@class='account']/strong");
     //           Elements
     protected WebElement getTabHome(){
-        return Constant.WEBDRIVER.findElement(btnHome);
+        return CONSTANT.WEBDRIVER.findElement(btnHome);
     }
     protected WebElement getTabFAQ(){
-      return Constant.WEBDRIVER.findElement(btnFAQ);
+      return CONSTANT.WEBDRIVER.findElement(btnFAQ);
 
     }
    protected WebElement getTabContact(){
-       return Constant.WEBDRIVER.findElement(btnContact);
+       return CONSTANT.WEBDRIVER.findElement(btnContact);
 
     }
     protected WebElement getTabTimeTable(){
-      return  Constant.WEBDRIVER.findElement(btnTimeTable);
+      return  CONSTANT.WEBDRIVER.findElement(btnTimeTable);
 
     }
     protected WebElement getTabTicketPrice(){
-      return  Constant.WEBDRIVER.findElement(btnTicketPrice);
+      return  CONSTANT.WEBDRIVER.findElement(btnTicketPrice);
 
     }
     protected WebElement getTabBookTicket(){
-      return  Constant.WEBDRIVER.findElement(btnBookTicket);
+      return  CONSTANT.WEBDRIVER.findElement(btnBookTicket);
 
     }
     protected WebElement getTabRegister(){
-      return   Constant.WEBDRIVER.findElement(btnRegister);
+      return   CONSTANT.WEBDRIVER.findElement(btnRegister);
 
     }
     protected WebElement getTabLogin(){
-     return  Constant.WEBDRIVER.findElement(btnLogin);
+     return  CONSTANT.WEBDRIVER.findElement(btnLogin);
 
     }
     protected WebElement getTxtWellComeMes(){
-        return Constant.WEBDRIVER.findElement(txtWelComeMes);
+        return CONSTANT.WEBDRIVER.findElement(txtWelComeMes);
 
     }
     //            Method
@@ -55,5 +55,8 @@ public class GeneralPage {
     public void  gotoLoginPage(){
         this.getTabLogin().click();
 
+    }
+    public void gotoRegisterPage(){
+        this.getTabRegister().click();
     }
 }
