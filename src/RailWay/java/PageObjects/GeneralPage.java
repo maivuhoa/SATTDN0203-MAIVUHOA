@@ -1,62 +1,63 @@
 package PageObjects;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import Common.Constant.CONSTANT;
+import Common.constant.Constant;
 
 public class GeneralPage {
     //            Locator
-    private final By btnHome = By.xpath("//a[@href='../']");
-    private final By btnFAQ = By.xpath("//a[@href='/Page/FAQ.cshtml']");
-    private final By btnContact = By.xpath("//a[@href='/Page/Contact.cshtml']");
-    private final By btnTimeTable = By.xpath("//a[@href='TrainTimeListPage.cshtml']");
-    private final By btnTicketPrice=By.xpath("//a[@href='/Page/TrainPriceListPage.cshtml']");
-    private final By btnBookTicket=By.xpath("//a[@href='/Page/BookTicketPage.cshtml']");
-    private final   By btnRegister=By.xpath("//a[@href='/Account/Register.cshtml']");
-    private final  By btnLogin=By.xpath("//a[@href='/Account/Login.cshtml']");
-    private final By txtWelComeMes=By.xpath("//div[@class='account']/strong");
+    private final By tabHome = By.xpath("//a[@href='../']");
+    private final By tabFAQ = By.xpath("//a[@href='/Page/FAQ.cshtml']");
+    private final By tabContact = By.xpath("//a[@href='/Page/Contact.cshtml']");
+    private final By tabTimeTable = By.xpath("//a[@href='TrainTimeListPage.cshtml']");
+    private final By tabTicketPrice = By.xpath("//a[@href='/Page/TrainPriceListPage.cshtml']");
+    private final By tabBookTicket = By.xpath("//a[@href='/Page/BookTicketPage.cshtml']");
+    private final By tabRegister = By.xpath("//a[@href='/Account/Register.cshtml']");
+    private final By tabLogin = By.xpath("//a[@href='/Account/Login.cshtml']");
+    private final By lblWelComeMessage = By.xpath("//div[@class='account']/strong");
     //           Elements
-    protected WebElement getTabHome(){
-        return CONSTANT.WEBDRIVER.findElement(btnHome);
+    protected WebElement getTabHome() {
+        return Constant.WEBDRIVER.findElement(tabHome);
     }
-    protected WebElement getTabFAQ(){
-      return CONSTANT.WEBDRIVER.findElement(btnFAQ);
 
+    protected WebElement getTabFAQ() {
+        return Constant.WEBDRIVER.findElement(tabFAQ);
     }
-   protected WebElement getTabContact(){
-       return CONSTANT.WEBDRIVER.findElement(btnContact);
 
+    protected WebElement getTabContact() {
+        return Constant.WEBDRIVER.findElement(tabContact);
     }
-    protected WebElement getTabTimeTable(){
-      return  CONSTANT.WEBDRIVER.findElement(btnTimeTable);
 
+    protected WebElement getTabTimeTable() {
+        return Constant.WEBDRIVER.findElement(tabTimeTable);
     }
-    protected WebElement getTabTicketPrice(){
-      return  CONSTANT.WEBDRIVER.findElement(btnTicketPrice);
 
+    protected WebElement getTabTicketPrice() {
+        return Constant.WEBDRIVER.findElement(tabTicketPrice);
     }
-    protected WebElement getTabBookTicket(){
-      return  CONSTANT.WEBDRIVER.findElement(btnBookTicket);
 
+    protected WebElement getTabBookTicket() {
+        return Constant.WEBDRIVER.findElement(tabBookTicket);
     }
-    protected WebElement getTabRegister(){
-      return   CONSTANT.WEBDRIVER.findElement(btnRegister);
 
+    protected WebElement getTabRegister() {
+        return Constant.WEBDRIVER.findElement(tabRegister);
     }
-    protected WebElement getTabLogin(){
-     return  CONSTANT.WEBDRIVER.findElement(btnLogin);
 
+    protected WebElement getTabLogin() {
+        return Constant.WEBDRIVER.findElement(tabLogin);
     }
-    protected WebElement getTxtWellComeMes(){
-        return CONSTANT.WEBDRIVER.findElement(txtWelComeMes);
 
+    protected WebElement getLblWellComeMessage() {
+        return Constant.WEBDRIVER.findElement(lblWelComeMessage);
     }
+
     //            Method
 
-    public void  gotoLoginPage(){
-        this.getTabLogin().click();
-
-    }
-    public void gotoRegisterPage(){
+    public void gotoRegisterPage() {
         this.getTabRegister().click();
     }
+    public void gotoLoginPage(){this.getTabLogin().click();}
+    public void gotoBookTicketPage(){this.getTabBookTicket().click();}
+
 }
