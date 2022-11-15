@@ -1,8 +1,9 @@
-package TestCases;
+package TestCases.changePassword;
 
 import Common.utilities.Utilities;
 import Common.constant.Constant;
 import PageObjects.*;
+import TestCases.SetUpBaseTest;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import org.apache.log4j.LogManager;
@@ -18,16 +19,14 @@ public class ChangePassWordTest extends SetUpBaseTest {
 
     @Test
     public void testChangePassWordSuccess() {
-        System.out.println("TC09- User can change password");
         String password = Utilities.generateRandomString(8);
         String email = Utilities.generateRandomEmail(10);
         String pid = Utilities.generateRandomString(10);
         String newPassword = Utilities.generateRandomString(8);
-        RegisterPage registerPage = new RegisterPage(Constant.WEBDRIVER);
+        RegisterPage registerPage = new RegisterPage();
         registerPage.gotoRegisterPage();
         Utilities.getLog();
         registerPage.testRegister(email, password, password, pid);
-
         logger.info("Step #1: Register new account");
         LoginPage loginPage = new LoginPage();
         loginPage.gotoLoginPage();
@@ -41,6 +40,7 @@ public class ChangePassWordTest extends SetUpBaseTest {
         changePassWordPage.changePass(password, newPassword, newPassword);
         logger.info("Step #5: Change password");
         Assert.assertEquals(changePassWordPage.getMessageSuccessChangePass().getText(), "Your password has been updated!");
+        System.out.println("TC09- User can change password");
     }
 
     @AfterMethod

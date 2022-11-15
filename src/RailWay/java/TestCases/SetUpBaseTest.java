@@ -19,10 +19,12 @@ public class SetUpBaseTest {
         return new Object[][]{{5}, {4}, {33}, {34}};
     }
 
+    @BeforeMethod
     public void beforeTest() {
         DriverManager.open();
     }
 
+    @AfterMethod
     public void afterTest() {
         DriverManager.afterTest();
     }

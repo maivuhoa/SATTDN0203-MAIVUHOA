@@ -11,10 +11,12 @@ import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
     private static ConfigFileReader configFileReader = new ConfigFileReader();
+
     public static void open() {
         setupDriver("chrome");
         Constant.WEBDRIVER.get(configFileReader.getApplicationUrl());
     }
+
     public static void setupDriver(String browserType) {
         switch (browserType.trim().toLowerCase()) {
             case "chrome":
@@ -51,7 +53,7 @@ public class DriverManager {
         return Constant.WEBDRIVER;
     }
 
-    public  static void afterTest() {
+    public static void afterTest() {
         Constant.WEBDRIVER.quit();
     }
 

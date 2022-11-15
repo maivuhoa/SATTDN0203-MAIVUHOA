@@ -1,6 +1,7 @@
 package PageObjects;
 
 import Common.constant.Constant;
+import Common.utilities.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -68,10 +69,7 @@ public class RegisterPage extends GeneralPage {
         getInpPassword().sendKeys(Password);
         getInpConfirmPassword().sendKeys(ConfirmPassword);
         getInpPID().sendKeys(PID);
-        js.executeScript("arguments[0].click();", getBtnRegister());
+        Utilities.scrollIntoView(getBtnRegister());
     }
 
-    public RegisterPage(WebDriver driver) {
-        js = (JavascriptExecutor) driver;
-    }
 }
