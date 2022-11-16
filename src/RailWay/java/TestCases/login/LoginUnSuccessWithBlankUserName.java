@@ -12,12 +12,6 @@ import org.testng.annotations.*;
 public class LoginUnSuccessWithBlankUserName extends SetUpBaseTest {
     private static final Logger logger = LogManager.getLogger(LoginUnSuccessWithBlankUserName.class);
 
-
-    @BeforeMethod
-    public void beforeTesting() {
-        super.beforeTest();
-    }
-
     @Test
     public void testLoginFailWithBlankUsername() {
         Utilities.getLog();
@@ -30,10 +24,5 @@ public class LoginUnSuccessWithBlankUserName extends SetUpBaseTest {
         loginPage.getBtnLogin().click();
         logger.info("Step #4: Click on Login button");
         Assert.assertEquals(loginPage.getPErrorMessageLogin().getText(), "There was a problem with your login and/or errors exist in your form.");
-    }
-
-    @AfterMethod
-    public void afterTesting() {
-        super.afterTest();
     }
 }

@@ -70,6 +70,7 @@ public class RegisterPage extends GeneralPage {
         getInpConfirmPassword().sendKeys(ConfirmPassword);
         getInpPID().sendKeys(PID);
         Utilities.scrollIntoView(getBtnRegister());
+        getBtnRegister().click();
     }
 
 }

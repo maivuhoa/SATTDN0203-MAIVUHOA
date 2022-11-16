@@ -13,7 +13,7 @@ public class DriverManager {
     private static ConfigFileReader configFileReader = new ConfigFileReader();
 
     public static void open() {
-        setupDriver("chrome");
+        setupDriver(configFileReader.getBrowser());
         Constant.WEBDRIVER.get(configFileReader.getApplicationUrl());
     }
 

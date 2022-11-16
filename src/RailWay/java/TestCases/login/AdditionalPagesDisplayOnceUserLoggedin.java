@@ -8,14 +8,10 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
 public class AdditionalPagesDisplayOnceUserLoggedin extends SetUpBaseTest {
     private static final Logger logger = LogManager.getLogger(AdditionalPagesDisplayOnceUserLoggedin.class);
 
-
-    @BeforeMethod
-    public void beforeTesting() {
-        super.beforeTest();
-    }
     @Test
     public void testAdditionalPagesDisplay() {
         Utilities.getLog();
@@ -38,9 +34,5 @@ public class AdditionalPagesDisplayOnceUserLoggedin extends SetUpBaseTest {
         logoutPage.gotoTabLogout();
         Assert.assertEquals(homePage.geth1WellComeRailWay().getText(), "Welcome to Safe Railway");
         System.out.println("TC06- Additional pages display once user logged in");
-    }
-    @AfterMethod
-    public void afterTesting() {
-        super.afterTest();
     }
 }

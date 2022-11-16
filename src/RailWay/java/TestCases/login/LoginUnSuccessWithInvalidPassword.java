@@ -12,12 +12,6 @@ import org.testng.annotations.*;
 public class LoginUnSuccessWithInvalidPassword extends SetUpBaseTest {
     private static final Logger logger = LogManager.getLogger(LoginUnSuccessWithInvalidPassword.class);
 
-
-    @BeforeMethod
-    public void beforeTesting() {
-        super.beforeTest();
-    }
-
     @Test()
     public void testLoginFailWithInValidPassword() {
         Utilities.getLog();
@@ -31,10 +25,5 @@ public class LoginUnSuccessWithInvalidPassword extends SetUpBaseTest {
         logger.info("Step #4: Click on Login button");
         Assert.assertEquals(loginPage.getPErrorMessageLogin().getText(), "Invalid username or password. Please try again.");
         System.out.println("TC03- User cannot log into Railway with invalid password ");
-    }
-
-    @AfterMethod
-    public void afterTesting() {
-        super.afterTest();
     }
 }

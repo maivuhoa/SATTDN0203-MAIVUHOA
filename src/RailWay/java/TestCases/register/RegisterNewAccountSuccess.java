@@ -16,11 +16,6 @@ import org.testng.annotations.Test;
 public class RegisterNewAccountSuccess extends SetUpBaseTest {
     private static final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
 
-    @BeforeTest
-    public void setup() {
-        super.beforeTest();
-    }
-
     @Test(dataProvider = "Valid Email Length")
     public void testRegisterSuccess(int len) {
         DriverManager.open();
@@ -33,15 +28,10 @@ public class RegisterNewAccountSuccess extends SetUpBaseTest {
         String confirmPass = password;
         String email = Utilities.generateRandomEmail(len);
         String PID = Utilities.generateRandomString(8);
-
         registerPage.testRegister(email, password, confirmPass, PID);
         registerPage.getBtnRegister().click();
         logger.info("Step #3: Enter valid information into all fields");
         Assert.assertEquals(registerPage.getRegisterSuccessMess().getText(), "You're here");
         System.out.println("TC07- User can create new account");
-    }
-    @AfterMethod
-    public void afterMethod() {
-        super.afterTest();
     }
 }

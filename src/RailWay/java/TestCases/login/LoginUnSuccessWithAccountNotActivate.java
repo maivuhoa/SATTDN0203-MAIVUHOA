@@ -9,14 +9,10 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
 public class LoginUnSuccessWithAccountNotActivate extends SetUpBaseTest {
     private static final Logger logger = LogManager.getLogger(LoginUnSuccessWithAccountNotActivate.class);
 
-
-    @BeforeMethod
-    public void beforeTesting() {
-        super.beforeTest();
-    }
     @Test()
     public void testAccountNotActivate() {
         Utilities.getLog();
@@ -35,9 +31,5 @@ public class LoginUnSuccessWithAccountNotActivate extends SetUpBaseTest {
         String urlLogin = Constant.WEBDRIVER.getCurrentUrl();
         Assert.assertEquals(urlLogin, "http://www.railwayb2.somee.com/Account/Login.cshtml");
         System.out.println("TC08- User can't login with an account hasn't been activated");
-    }
-    @AfterMethod
-    public void afterTesting() {
-        super.afterTest();
     }
 }
