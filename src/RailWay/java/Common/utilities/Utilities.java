@@ -2,15 +2,11 @@ package Common.utilities;
 
 import Common.constant.Constant;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.log4j.BasicConfigurator;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class Utilities {
 
@@ -47,9 +43,8 @@ public class Utilities {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
     public static String randomNumber(){
-        int randomNum;
-       randomNum = 4 + (int)(Math.random() * 30);
-       return Integer.toString(randomNum);
+        int randomDate = 3 + (int) (Math.random() * (30 - 4)+1);
+        return Integer.toString(randomDate);
 
     }
 }

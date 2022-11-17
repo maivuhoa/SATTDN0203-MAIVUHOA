@@ -18,9 +18,7 @@ public class BookTicketSuccess extends SetUpBaseTest {
         bookTicketPage.gotoBookTicketPage();
         String departDate = Utilities.randomNumber();
         String departDayValue = bookTicketPage.getValueDateDepart(departDate);
-
         bookTicketPage.bookTicketKetSuccess(departDate, "1", "3", "6", "1");
-
         Assert.assertEquals(bookTicketPage.getTextLblBookTicketSuccess(), "Ticket Booked Successfully!");
         Assert.assertEquals(departDayValue, bookTicketPage.getTextInformationTicket("Depart Date"));
         Assert.assertEquals("Sài Gòn", bookTicketPage.getTextInformationTicket("Depart Station"));

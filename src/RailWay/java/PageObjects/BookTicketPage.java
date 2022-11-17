@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class BookTicketPage extends GeneralPage {
-    private static final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
     //Locator
     private final By btnBookTicket = By.xpath("//form[@method='post']//input[@type='submit']");
     private final By lblBookTicketSuccessfully = By.xpath("//div[@id='content']//h1[@align='center']");
@@ -36,13 +35,41 @@ public class BookTicketPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable WideTable']//td[count(//th[text()=" + "'" + value + "'" + "]/preceding-sibling::th)+1]"));
     }
 
+    protected WebElement dynamicLocatorDepartFrom() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//select[@name='DepartStation']"));
+    }
+
+    protected WebElement dynamicLocatorArriveAt() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//select[@name='ArriveStation']"));
+    }
+
     //Methods
     public String getTextLblBookTicketSuccess() {
         return getLblBookTicketSuccess().getText();
     }
 
+    public WebElement getTextBtnBookTicket() {
+        return getBtnBookTicket();
+    }
+
     public String getTextInformationTicket(String value) {
         return dynamicLocatorForTicket(value).getText();
+    }
+
+    public Select getValueDepartFrom() {
+        return new Select(dynamicLocatorDepartFrom());
+    }
+
+    public Select getValueArriveAt() {
+        return new Select(dynamicLocatorArriveAt());
+    }
+
+    public String getSelectedDepartFrom() {
+        return getValueDepartFrom().getFirstSelectedOption().getText();
+    }
+
+    public String getSelectedArriveAt() {
+        return getValueArriveAt().getFirstSelectedOption().getText();
     }
 
     public void selectDate(String dateDepart) {
@@ -82,6 +109,8 @@ public class BookTicketPage extends GeneralPage {
     }
 
     public void bookTicketKetSuccess(String SelectDate, String SelectDepartFrom, String SelectArrive, String SeatType, String Amount) {
+        final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
+
         Utilities.getLog();
         logger.info("Navigate to QA Railway Website");
         logger.info("Login with a valid account");

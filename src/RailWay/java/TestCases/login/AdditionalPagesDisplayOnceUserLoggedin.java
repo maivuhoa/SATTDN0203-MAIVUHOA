@@ -28,7 +28,7 @@ public class AdditionalPagesDisplayOnceUserLoggedin extends SetUpBaseTest {
         loginPage.getBtnLogin().click();
         logger.info("Step #3: Login with valid account");
         myTicketPage.gotoMyTicketPage();
-        Assert.assertEquals(myTicketPage.geth1ManageTickets().getText(), "Manage Tickets");
+        Assert.assertEquals(myTicketPage.getTextManageTicket(), "Manage Tickets");
         changePassWordPage.gotoTabChangePassWord();
         Assert.assertEquals(changePassWordPage.getLblChangePassword().getText(), "Change password");
         logoutPage.gotoTabLogout();

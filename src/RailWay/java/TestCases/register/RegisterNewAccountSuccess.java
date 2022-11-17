@@ -1,24 +1,18 @@
 package TestCases.register;
 
-import Common.constant.Constant;
-import Common.utilities.DriverManager;
 import Common.utilities.Utilities;
 import PageObjects.RegisterPage;
 import TestCases.SetUpBaseTest;
-import TestCases.changePassword.ChangePassWordTest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class RegisterNewAccountSuccess extends SetUpBaseTest {
-    private static final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
+    private static final Logger logger = LogManager.getLogger(RegisterNewAccountSuccess.class);
 
     @Test(dataProvider = "Valid Email Length")
     public void testRegisterSuccess(int len) {
-        DriverManager.open();
         Utilities.getLog();
         logger.info("Step #1: Register new account");
         RegisterPage registerPage = new RegisterPage();

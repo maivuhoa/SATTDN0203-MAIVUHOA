@@ -1,21 +1,27 @@
 package PageObjects;
 
 import Common.constant.Constant;
+import Common.utilities.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class MyTicketPage extends GeneralPage {
     // Locator
     private final By tabMyTicket = By.xpath("//a[@href='/Page/ManageTicket.cshtml']");
-    private final By h1ManageTickets = By.xpath("//div[@id='content']/h1[text()='Manage Tickets']");
+    private final By lblManageTickets = By.xpath("//div[@id='content']/h1[text()='Manage Tickets']");
+    private final By btnCancelTicket = By.xpath("//input[@value='Cancel']");
 
     // Elements
-    public WebElement getTabMyTicket() {
+    protected WebElement getTabMyTicket() {
         return Constant.WEBDRIVER.findElement(tabMyTicket);
     }
 
-    public WebElement geth1ManageTickets() {
-        return Constant.WEBDRIVER.findElement(h1ManageTickets);
+    protected WebElement getLblManageTickets() {
+        return Constant.WEBDRIVER.findElement(lblManageTickets);
+    }
+
+    protected WebElement getBtnCancelButton() {
+        return Constant.WEBDRIVER.findElement(btnCancelTicket);
     }
 
     //Methods
@@ -23,4 +29,26 @@ public class MyTicketPage extends GeneralPage {
         this.getTabMyTicket().click();
     }
 
+    public void clickBtnCancelTicket() {
+        Utilities.scrollIntoView(getBtnCancelButton());
+        getBtnCancelButton().click();
+
+    }
+
+    public String getTextManageTicket() {
+        return getLblManageTickets().getText();
+    }
+
+    public void acceptOKCancel() {
+        Constant.WEBDRIVER.switchTo().alert().accept();
+    }
+
+    public boolean isElementPresent(By locatorKey) {
+        try {
+            Constant.WEBDRIVER.findElement(locatorKey);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
 }

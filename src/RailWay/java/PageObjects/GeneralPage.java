@@ -60,6 +60,7 @@ public class GeneralPage {
     }
     public void gotoLoginPage(){this.getTabLogin().click();}
     public void gotoBookTicketPage(){this.getTabBookTicket().click();}
+    public void gotoTimeTablePage(){this.getTabTimeTable().click();}
 
 
 }

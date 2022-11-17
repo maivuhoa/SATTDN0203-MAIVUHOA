@@ -1,14 +1,13 @@
 package TestCases.login;
 
-import Common.utilities.Utilities;
-import PageObjects.*;
 import Common.constant.Constant;
+import Common.utilities.Utilities;
+import PageObjects.LoginPage;
 import TestCases.SetUpBaseTest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.*;
-
+import org.testng.annotations.Test;
 public class LoginSuccessWithValidEmailAndPassWord extends SetUpBaseTest {
     private static final Logger logger = LogManager.getLogger(LoginSuccessWithValidEmailAndPassWord.class);
 
