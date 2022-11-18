@@ -10,8 +10,9 @@ public class HomePage extends GeneralPage {
     private final By lblWellComeRailWay = By.xpath("//div[@id='content']/h1[text()='Welcome to Safe Railway']");
 
     // Elements
-    public WebElement geth1WellComeRailWay() {
+    protected WebElement getLblWellComeRailWay() {
         return Constant.WEBDRIVER.findElement(lblWellComeRailWay);
     }
-
+    //Methods
+    public String getTextLblWellComeRailWay(){return getLblWellComeRailWay().getText();}
 }

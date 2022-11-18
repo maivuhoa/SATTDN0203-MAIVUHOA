@@ -19,13 +19,12 @@ public class RegisterNewAccountSuccess extends SetUpBaseTest {
         registerPage.gotoRegisterPage();
         logger.info("Step #2: Click on Register tab");
         String password = Utilities.generateRandomString(8);
-        String confirmPass = password;
         String email = Utilities.generateRandomEmail(len);
         String PID = Utilities.generateRandomString(8);
-        registerPage.testRegister(email, password, confirmPass, PID);
-        registerPage.getBtnRegister().click();
+        registerPage.testRegister(email, password, password, PID);
+        registerPage.clickBtnRegister();
         logger.info("Step #3: Enter valid information into all fields");
-        Assert.assertEquals(registerPage.getRegisterSuccessMess().getText(), "You're here");
+        Assert.assertEquals(registerPage.getTextRegisterSuccessMess(), "You're here");
         System.out.println("TC07- User can create new account");
     }
 }

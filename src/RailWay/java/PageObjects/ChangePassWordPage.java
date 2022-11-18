@@ -15,31 +15,31 @@ public class ChangePassWordPage extends GeneralPage {
     private final By lblChangePassword = By.xpath("//h1[text()='Change password']");
 
     //Elements
-    public WebElement getTabChangePassWord() {
+    protected WebElement getTabChangePassWord() {
         return Constant.WEBDRIVER.findElement(tabChangePassWord);
     }
 
-    public WebElement getTxtCurrentPassWord() {
+    protected WebElement getTxtCurrentPassWord() {
         return Constant.WEBDRIVER.findElement(txtCurrentPassWord);
     }
 
-    public WebElement getTxtNewPassWord() {
+    protected WebElement getTxtNewPassWord() {
         return Constant.WEBDRIVER.findElement(txtNewPassWord);
     }
 
-    public WebElement getTxtConfirmPassWord() {
+    protected WebElement getTxtConfirmPassWord() {
         return Constant.WEBDRIVER.findElement(txtConfirmPassWord);
     }
 
-    public WebElement getBtnChangePassWord() {
+    protected WebElement getBtnChangePassWord() {
         return Constant.WEBDRIVER.findElement(btnChangePassWord);
     }
 
-    public WebElement getMessageSuccessChangePass() {
+    protected WebElement getMessageSuccessChangePass() {
         return Constant.WEBDRIVER.findElement(lblSuccessChangePass);
     }
 
-    public WebElement getLblChangePassword() {
+    protected WebElement getLblChangePassword() {
         return Constant.WEBDRIVER.findElement(lblChangePassword);
     }
 
@@ -47,7 +47,8 @@ public class ChangePassWordPage extends GeneralPage {
     public void gotoTabChangePassWord() {
         getTabChangePassWord().click();
     }
-
+    public String getTextChangePassSuccess(){return getMessageSuccessChangePass().getText();}
+    public String getTextLblChangePassWord(){return getLblChangePassword().getText();}
     public void changePass(String currentPass, String newPass, String confirmPass) {
         getTxtCurrentPassWord().sendKeys(currentPass);
         getTxtNewPassWord().sendKeys(newPass);

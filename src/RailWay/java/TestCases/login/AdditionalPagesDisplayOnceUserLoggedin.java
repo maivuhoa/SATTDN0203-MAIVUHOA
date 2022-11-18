@@ -25,14 +25,13 @@ public class AdditionalPagesDisplayOnceUserLoggedin extends SetUpBaseTest {
         loginPage.getTabLogin().click();
         logger.info("Step #2: Click on Login tab");
         loginPage.testLogin(Constant.LOGIN_USERNAME, Constant.LOGIN_PASSWORD);
-        loginPage.getBtnLogin().click();
         logger.info("Step #3: Login with valid account");
         myTicketPage.gotoMyTicketPage();
         Assert.assertEquals(myTicketPage.getTextManageTicket(), "Manage Tickets");
         changePassWordPage.gotoTabChangePassWord();
-        Assert.assertEquals(changePassWordPage.getLblChangePassword().getText(), "Change password");
+        Assert.assertEquals(changePassWordPage.getTextLblChangePassWord(), "Change password");
         logoutPage.gotoTabLogout();
-        Assert.assertEquals(homePage.geth1WellComeRailWay().getText(), "Welcome to Safe Railway");
+        Assert.assertEquals(homePage.getTextLblWellComeRailWay(), "Welcome to Safe Railway");
         System.out.println("TC06- Additional pages display once user logged in");
     }
 }

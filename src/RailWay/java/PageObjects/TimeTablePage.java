@@ -14,7 +14,7 @@ public class TimeTablePage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable WideTable']//td[count(//th[text()=" + "'" + value + "'" + "]/preceding-sibling::th)+1]"));
     }
 
-    protected static WebElement dynamicLocatorForBookticket(String departFrom, String arriveAt) {
+    protected WebElement dynamicLocatorForBookticket(String departFrom, String arriveAt) {
         return Constant.WEBDRIVER.findElement(By.xpath("//td[text()='" + departFrom + "']/following-sibling::td[text()='" + arriveAt + "']/..//a[contains(@href, 'Book')]"));
     }
 
@@ -29,7 +29,7 @@ public class TimeTablePage extends GeneralPage {
     }
 
     public void selectDepartFromAndArrive() {
-        WebElement element = dynamicLocatorForBookticket("Huế","Sài Gòn");
+        WebElement element = dynamicLocatorForBookticket("Huế", "Sài Gòn");
         Utilities.scrollIntoView(element);
         element.click();
     }

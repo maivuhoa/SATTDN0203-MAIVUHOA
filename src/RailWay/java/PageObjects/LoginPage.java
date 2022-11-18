@@ -6,47 +6,41 @@ import org.openqa.selenium.WebElement;
 
 public class LoginPage extends GeneralPage {
     // Locator
-    private final By userName = By.xpath("//input[@id='username']");
-    private final By passWord = By.xpath("//input[@id='password']");
+    private final By txtUserName = By.xpath("//input[@id='username']");
+    private final By txtPassWord = By.xpath("//input[@id='password']");
     private final By btnLogin = By.xpath("//input[@value='Login']");
-    private final By txtLoginErrorMes = By.xpath("//p[@class='message error LoginForm']");
-    private final By msgErrorMessageLogin = By.xpath("//div[@id='content']/p[contains(@class,'error LoginForm')]");
+    private final By lblLoginErrorMessage = By.xpath("//p[@class='message error LoginForm']");
     private final By lblValidationErrorEmail = By.xpath("//li[@class='username']/label[@class='validation-error']");
-    private final By pErrorMessageLogin = By.xpath("//div[@id='content']/p[@class='message error LoginForm']");
-    private final By txtLoginPage = By.xpath("//div[@id='content']/h1[@align='center']");
+    private final By lblErrorMessageLogin = By.xpath("//div[@id='content']/p[@class='message error LoginForm']");
+    private final By lblLoginPage = By.xpath("//div[@id='content']/h1[@align='center']");
 
     // Elements
-    public WebElement getTxtUserName() {
-        return Constant.WEBDRIVER.findElement(userName);
+    protected WebElement getTxtUserName() {
+        return Constant.WEBDRIVER.findElement(txtUserName);
     }
 
-    public WebElement getTxtPassWord() {
-        return Constant.WEBDRIVER.findElement(passWord);
+    protected WebElement getTxtPassWord() {
+        return Constant.WEBDRIVER.findElement(txtPassWord);
     }
 
-    public WebElement getBtnLogin() {
+    protected WebElement getBtnLogin() {
         return Constant.WEBDRIVER.findElement(btnLogin);
     }
 
-
-    public WebElement getErrorMessageLogin() {
-        return Constant.WEBDRIVER.findElement(msgErrorMessageLogin);
+    protected WebElement getTxtMessError() {
+        return Constant.WEBDRIVER.findElement(lblLoginErrorMessage);
     }
 
-    public WebElement getTxtMessError() {
-        return Constant.WEBDRIVER.findElement(txtLoginErrorMes);
-    }
-
-    public WebElement getLblValidationErrorEmail() {
+    protected WebElement getLblValidationErrorEmail() {
         return Constant.WEBDRIVER.findElement(lblValidationErrorEmail);
     }
 
-    public WebElement getPErrorMessageLogin() {
-        return Constant.WEBDRIVER.findElement(pErrorMessageLogin);
+    protected WebElement getLblErrorMessageLogin() {
+        return Constant.WEBDRIVER.findElement(lblErrorMessageLogin);
     }
 
-    public WebElement getTxtLoginPage() {
-        return Constant.WEBDRIVER.findElement(txtLoginPage);
+    protected WebElement getLblLoginPage() {
+        return Constant.WEBDRIVER.findElement(lblLoginPage);
     }
 
     //  Methods
@@ -63,5 +57,9 @@ public class LoginPage extends GeneralPage {
     public WebElement getTabLogin() {
         return super.getTabLogin();
     }
+    public WebElement getElementBtnLogin(){return getBtnLogin();}
+    public String getTextLblLogin(){return getLblLoginPage().getText();}
+    public String getTextLblErrorMessageLogin(){return getLblErrorMessageLogin().getText();}
+    public void clickBtnLogin(){getBtnLogin().click();}
 
 }

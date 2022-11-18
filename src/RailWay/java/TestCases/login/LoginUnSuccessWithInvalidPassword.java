@@ -20,10 +20,8 @@ public class LoginUnSuccessWithInvalidPassword extends SetUpBaseTest {
         loginPage.getTabLogin().click();
         logger.info("Step #2: Click on Login tab");
         loginPage.testLogin(Constant.LOGIN_USERNAME, Utilities.generateRandomStringWithSpecialCharacter(8));
-        logger.info("Step #3: Enter valid Email and invalid Password");
-        loginPage.getBtnLogin().click();
-        logger.info("Step #4: Click on Login button");
-        Assert.assertEquals(loginPage.getPErrorMessageLogin().getText(), "Invalid username or password. Please try again.");
+        logger.info("Step #3: Login with valid Email and invalid Password");
+        Assert.assertEquals(loginPage.getTextLblErrorMessageLogin(), "Invalid username or password. Please try again.");
         System.out.println("TC03- User cannot log into Railway with invalid password ");
     }
 }

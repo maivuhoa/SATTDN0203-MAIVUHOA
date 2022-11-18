@@ -1,13 +1,14 @@
 package TestCases.changePassword;
 
 import Common.utilities.Utilities;
-import Common.constant.Constant;
-import PageObjects.*;
+import PageObjects.ChangePassWordPage;
+import PageObjects.LoginPage;
+import PageObjects.RegisterPage;
 import TestCases.SetUpBaseTest;
-import org.testng.Assert;
-import org.testng.annotations.*;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class ChangePassWordTest extends SetUpBaseTest {
     private static final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
@@ -34,7 +35,7 @@ public class ChangePassWordTest extends SetUpBaseTest {
         logger.info("Step #4: Navigate to Change Password page");
         changePassWordPage.changePass(password, newPassword, newPassword);
         logger.info("Step #5: Change password");
-        Assert.assertEquals(changePassWordPage.getMessageSuccessChangePass().getText(), "Your password has been updated!");
+        Assert.assertEquals(changePassWordPage.getTextChangePassSuccess(), "Your password has been updated!");
         System.out.println("TC09- User can change password");
     }
 }

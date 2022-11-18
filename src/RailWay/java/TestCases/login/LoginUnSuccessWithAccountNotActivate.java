@@ -27,7 +27,6 @@ public class LoginUnSuccessWithAccountNotActivate extends SetUpBaseTest {
         registerPage.testRegister(email, password, password, PID);
         loginPage.getTabLogin().click();
         loginPage.testLogin(email, password);
-        loginPage.getBtnLogin().click();
         String urlLogin = Constant.WEBDRIVER.getCurrentUrl();
         Assert.assertEquals(urlLogin, "http://www.railwayb2.somee.com/Account/Login.cshtml");
         System.out.println("TC08- User can't login with an account hasn't been activated");

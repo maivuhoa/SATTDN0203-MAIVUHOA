@@ -3,12 +3,15 @@ package TestCases;
 import Common.utilities.DriverManager;
 import Common.utilities.Utilities;
 import PageObjects.RegisterPage;
+import TestCases.bookTicket.BookTicketViaTimeTable;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
 public class SetUpBaseTest {
-
+    private static final Logger logger = LogManager.getLogger(BookTicketViaTimeTable.class);
     private String email;
     private String password;
 
@@ -44,6 +47,8 @@ public class SetUpBaseTest {
     @BeforeMethod
     public void beforeTest() {
         DriverManager.open();
+       // logger.info("Step #1: Navigate to QA Railway Website");
+
     }
 
     @AfterMethod

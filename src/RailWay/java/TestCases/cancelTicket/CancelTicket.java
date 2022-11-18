@@ -1,5 +1,7 @@
 package TestCases.cancelTicket;
 
+import Common.constant.SeatType;
+import Common.constant.Station;
 import Common.utilities.Utilities;
 import PageObjects.BookTicketPage;
 import PageObjects.LoginPage;
@@ -20,7 +22,7 @@ public class CancelTicket extends SetUpBaseTest {
         loginPage.gotoLoginPage();
         loginPage.testLogin(getEmail(), getPassword());
         bookTicketPage.gotoBookTicketPage();
-        bookTicketPage.bookTicketKetSuccess(departDate, "1", "3", "6", "1");
+        bookTicketPage.bookTicketKetSuccess(departDate, Station.SAIGON, Station.NHATRANG, SeatType.SBWAC, "1");
         myTicketPage.gotoMyTicketPage();
         myTicketPage.clickBtnCancelTicket();
         myTicketPage.acceptOKCancel();

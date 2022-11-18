@@ -6,4 +6,9 @@
             <class name="TestCases.changePassword.ChangePassWordTest"/>
         </classes>
     </test>
+    <test name="SecondTest">
+        <classes>
+            <class name="TestCases.login.LoginSuccessWithValidEmailAndPassWord"/>
+        </classes>
+    </test>
 </suite>

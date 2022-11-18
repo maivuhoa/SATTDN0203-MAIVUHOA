@@ -53,14 +53,11 @@ public class GeneralPage {
     }
 
     //            Method
-    public static String tabMenu="div[@id='content']//select[@name='";
-
     public void gotoRegisterPage() {
         this.getTabRegister().click();
     }
     public void gotoLoginPage(){this.getTabLogin().click();}
     public void gotoBookTicketPage(){this.getTabBookTicket().click();}
     public void gotoTimeTablePage(){this.getTabTimeTable().click();}
-
 
 }

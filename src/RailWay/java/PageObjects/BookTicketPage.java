@@ -1,6 +1,8 @@
 package PageObjects;
 
 import Common.constant.Constant;
+import Common.constant.SeatType;
+import Common.constant.Station;
 import Common.utilities.Utilities;
 import TestCases.changePassword.ChangePassWordTest;
 import org.apache.log4j.LogManager;
@@ -76,8 +78,6 @@ public class BookTicketPage extends GeneralPage {
         WebElement element = dynamicLocatorForDropDown("Date");
         Select select = new Select(element);
         select.selectByValue(dateDepart);
-
-
     }
 
     public String getValueDateDepart(String value) {
@@ -87,19 +87,19 @@ public class BookTicketPage extends GeneralPage {
     public void selectDepartFrom(String departFrom) {
         WebElement element = dynamicLocatorForDropDown("DepartStation");
         Select select = new Select(element);
-        select.selectByValue(departFrom);
+        select.selectByVisibleText(departFrom);
     }
 
     public void selectArriveAt(String arriveAt) {
         WebElement element = dynamicLocatorForDropDown("ArriveStation");
         Select select = new Select(element);
-        select.selectByValue(arriveAt);
+        select.selectByVisibleText(arriveAt);
     }
 
     public void selectSeatType(String seatType) {
         WebElement element = dynamicLocatorForDropDown("SeatType");
         Select select = new Select(element);
-        select.selectByValue(seatType);
+        select.selectByVisibleText(seatType);
     }
 
     public void selectTicketAmount(String ticketAmount) {
@@ -108,7 +108,7 @@ public class BookTicketPage extends GeneralPage {
         select.selectByValue(ticketAmount);
     }
 
-    public void bookTicketKetSuccess(String SelectDate, String SelectDepartFrom, String SelectArrive, String SeatType, String Amount) {
+    public void bookTicketKetSuccess(String SelectDate, Station SelectDepartFrom, Station SelectArrive, SeatType SeatType, String Amount) {
         final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
 
         Utilities.getLog();
@@ -116,11 +116,11 @@ public class BookTicketPage extends GeneralPage {
         logger.info("Login with a valid account");
         selectDate(SelectDate);
         logger.info("Select a Depart date from the list");
-        selectDepartFrom(SelectDepartFrom);
+        selectDepartFrom(SelectDepartFrom.getStation());
         logger.info("Select Sài Gòn for Depart from");
-        selectArriveAt(SelectArrive);
+        selectArriveAt(SelectArrive.getStation());
         logger.info("Select Nha Trang for Arrive at");
-        selectSeatType(SeatType);
+        selectSeatType(SeatType.getSeatType());
         logger.info("Select Soft bed with air conditioner for Seat type");
         selectTicketAmount(Amount);
         logger.info("Select 1 for Ticket amount");
@@ -128,5 +128,4 @@ public class BookTicketPage extends GeneralPage {
         getBtnBookTicket().click();
         logger.info("Click on Book ticket button");
     }
-
 }

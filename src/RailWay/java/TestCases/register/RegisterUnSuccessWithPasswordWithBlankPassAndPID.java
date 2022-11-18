@@ -1,14 +1,11 @@
 package TestCases.register;
 
 import TestCases.SetUpBaseTest;
-import Common.constant.Constant;
 import Common.utilities.Utilities;
 import PageObjects.RegisterPage;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class RegisterUnSuccessWithPasswordWithBlankPassAndPID extends SetUpBaseTest {
@@ -26,7 +23,7 @@ public class RegisterUnSuccessWithPasswordWithBlankPassAndPID extends SetUpBaseT
         registerPage.testRegister(email, "", confirmPass, "");
         logger.info("Step #3: Enter valid email address and leave other fields empty");
         logger.info("Step #4: Click on Register button");
-        Assert.assertEquals(registerPage.getpaErrorMessageForm().getText(), "There're errors in the form. Please correct the errors and try again.");
+        Assert.assertEquals(registerPage.getTextLblErrorMessageForm(), "There're errors in the form. Please correct the errors and try again.");
         System.out.println("TC11- User can't create account while password and PID fields are empty");
     }
 }

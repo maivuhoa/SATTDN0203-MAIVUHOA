@@ -37,8 +37,8 @@ public class DriverManager {
         WebDriverManager.chromedriver().setup();
         Constant.WEBDRIVER = new ChromeDriver();
         Constant.WEBDRIVER.manage().window().maximize();
-        Constant.WEBDRIVER.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        Constant.WEBDRIVER.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        Constant.WEBDRIVER.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+        Constant.WEBDRIVER.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         return Constant.WEBDRIVER;
     }
 
