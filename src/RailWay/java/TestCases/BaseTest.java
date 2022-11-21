@@ -39,7 +39,7 @@ public class SetUpBaseTest {
         email = Utilities.generateRandomEmail(10);
         String newPID = Utilities.generateRandomString(10);
         RegisterPage registerPage = new RegisterPage();
-        registerPage.gotoRegisterPage();
+        registerPage.clickRegisterTab();
         Utilities.getLog();
         registerPage.testRegister(email, password, password, newPID);
     }
@@ -47,12 +47,10 @@ public class SetUpBaseTest {
     @BeforeMethod
     public void beforeTest() {
         DriverManager.open();
-       // logger.info("Step #1: Navigate to QA Railway Website");
-
     }
 
     @AfterMethod
     public void afterTest() {
-        DriverManager.afterTest();
+        DriverManager.quitDriver();
     }
 }
