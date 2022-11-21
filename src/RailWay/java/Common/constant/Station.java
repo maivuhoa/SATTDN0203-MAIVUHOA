@@ -9,7 +9,7 @@ public enum Station {
     QUANGNGAI("Quảng Ngãi");
     public final String departStation;
 
-    private Station(String departStation) {
+    Station(String departStation) {
         this.departStation = departStation;
     }
 

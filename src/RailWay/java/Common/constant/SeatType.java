@@ -9,7 +9,7 @@ public enum SeatType {
     SBWAC("Soft bed with air conditioner");
     public final String seatType;
 
-    private SeatType(String seatType) {
+    SeatType(String seatType) {
         this.seatType = seatType;
     }
 

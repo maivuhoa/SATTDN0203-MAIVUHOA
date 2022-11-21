@@ -10,7 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
-public class SetUpBaseTest {
+public class BaseTest {
     private static final Logger logger = LogManager.getLogger(BookTicketViaTimeTable.class);
     private String email;
     private String password;

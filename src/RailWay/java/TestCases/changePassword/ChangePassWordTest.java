@@ -4,13 +4,13 @@ import Common.utilities.Utilities;
 import PageObjects.ChangePassWordPage;
 import PageObjects.LoginPage;
 import PageObjects.RegisterPage;
-import TestCases.SetUpBaseTest;
+import TestCases.BaseTest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ChangePassWordTest extends SetUpBaseTest {
+public class ChangePassWordTest extends BaseTest {
     private static final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
 
     @Test
@@ -20,18 +20,17 @@ public class ChangePassWordTest extends SetUpBaseTest {
         String pid = Utilities.generateRandomString(10);
         String newPassword = Utilities.generateRandomString(8);
         RegisterPage registerPage = new RegisterPage();
-        registerPage.gotoRegisterPage();
+        registerPage.clickRegisterTab();
         Utilities.getLog();
         registerPage.testRegister(email, password, password, pid);
         logger.info("Step #1: Register new account");
         LoginPage loginPage = new LoginPage();
-        loginPage.gotoLoginPage();
+        loginPage.clickLoginTab();
         logger.info("Step #2: Navigate to Login page");
-        loginPage.testLogin(email, password);
-        System.out.println(password);
+        loginPage.loginAccount(email, password);
         logger.info("Step #3: Login with new account");
         ChangePassWordPage changePassWordPage = new ChangePassWordPage();
-        changePassWordPage.gotoTabChangePassWord();
+        changePassWordPage.clickChangePassWordTab();
         logger.info("Step #4: Navigate to Change Password page");
         changePassWordPage.changePass(password, newPassword, newPassword);
         logger.info("Step #5: Change password");

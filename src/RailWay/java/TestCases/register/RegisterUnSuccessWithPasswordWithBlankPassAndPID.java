@@ -1,6 +1,6 @@
 package TestCases.register;
 
-import TestCases.SetUpBaseTest;
+import TestCases.BaseTest;
 import Common.utilities.Utilities;
 import PageObjects.RegisterPage;
 import org.apache.log4j.LogManager;
@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class RegisterUnSuccessWithPasswordWithBlankPassAndPID extends SetUpBaseTest {
+public class RegisterUnSuccessWithPasswordWithBlankPassAndPID extends BaseTest {
     private static final Logger logger = LogManager.getLogger(RegisterUnsuccessWithPasswordNotMatch.class);
 
     @Test
@@ -16,7 +16,7 @@ public class RegisterUnSuccessWithPasswordWithBlankPassAndPID extends SetUpBaseT
         Utilities.getLog();
         logger.info("Step #1: Navigate to QA Railway Website");
         RegisterPage registerPage = new RegisterPage();
-        registerPage.gotoRegisterPage();
+        registerPage.clickRegisterTab();
         logger.info("Step #2: Click on Register tab");
         String email = Utilities.generateRandomEmail(10);
         String confirmPass = Utilities.generateRandomString(10);

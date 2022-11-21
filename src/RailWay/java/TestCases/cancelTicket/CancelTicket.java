@@ -1,17 +1,15 @@
 package TestCases.cancelTicket;
 
-import Common.constant.SeatType;
-import Common.constant.Station;
 import Common.utilities.Utilities;
 import PageObjects.BookTicketPage;
 import PageObjects.LoginPage;
 import PageObjects.MyTicketPage;
-import TestCases.SetUpBaseTest;
+import TestCases.BaseTest;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CancelTicket extends SetUpBaseTest {
+public class CancelTicket extends BaseTest {
     @Test
     public void cancelTicketSuccess() {
         registerNewAccount();
@@ -19,11 +17,11 @@ public class CancelTicket extends SetUpBaseTest {
         BookTicketPage bookTicketPage = new BookTicketPage();
         MyTicketPage myTicketPage = new MyTicketPage();
         String departDate = Utilities.randomNumber();
-        loginPage.gotoLoginPage();
-        loginPage.testLogin(getEmail(), getPassword());
-        bookTicketPage.gotoBookTicketPage();
-        bookTicketPage.bookTicketKetSuccess(departDate, Station.SAIGON, Station.NHATRANG, SeatType.SBWAC, "1");
-        myTicketPage.gotoMyTicketPage();
+        loginPage.clickLoginTab();
+        loginPage.loginAccount(getEmail(), getPassword());
+        bookTicketPage.clickBookTicketTab();
+        bookTicketPage.bookTicketKetSuccess(departDate,"Sài Gòn","Nha Trang","Soft bed with air conditioner", "1");
+        myTicketPage.clickMyTicketTab();
         myTicketPage.clickBtnCancelTicket();
         myTicketPage.acceptOKCancel();
         String myTableIsDisplayed = String.valueOf(myTicketPage.isElementPresent(By.xpath("//table[@class='MyTable']")));

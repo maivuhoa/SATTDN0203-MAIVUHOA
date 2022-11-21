@@ -42,8 +42,9 @@ public class Utilities {
         js = (JavascriptExecutor) Constant.WEBDRIVER;
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
-    public static String randomNumber(){
-        int randomDate = 3 + (int) (Math.random() * (30 - 4)+1);
+
+    public static String randomNumber() {
+        int randomDate = 3 + (int) (Math.random() * (30 - 4) + 1);
         return Integer.toString(randomDate);
 
     }

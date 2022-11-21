@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 
 public class ChangePassWordPage extends GeneralPage {
     //Locator
-    private final By tabChangePassWord = By.xpath("//a[@href='/Account/ChangePassword.cshtml']");
     private final By txtCurrentPassWord = By.xpath("//li[@class='current-password']/input[@id='currentPassword']");
     private final By txtNewPassWord = By.xpath("//li[@class='new-password']/input[@id='newPassword']");
     private final By txtConfirmPassWord = By.xpath("//li[@class='confirm-password']/input[@id='confirmPassword']");
@@ -15,10 +14,6 @@ public class ChangePassWordPage extends GeneralPage {
     private final By lblChangePassword = By.xpath("//h1[text()='Change password']");
 
     //Elements
-    protected WebElement getTabChangePassWord() {
-        return Constant.WEBDRIVER.findElement(tabChangePassWord);
-    }
-
     protected WebElement getTxtCurrentPassWord() {
         return Constant.WEBDRIVER.findElement(txtCurrentPassWord);
     }
@@ -44,11 +39,14 @@ public class ChangePassWordPage extends GeneralPage {
     }
 
     //Methods
-    public void gotoTabChangePassWord() {
-        getTabChangePassWord().click();
+    public String getTextChangePassSuccess() {
+        return getMessageSuccessChangePass().getText();
     }
-    public String getTextChangePassSuccess(){return getMessageSuccessChangePass().getText();}
-    public String getTextLblChangePassWord(){return getLblChangePassword().getText();}
+
+    public String getTextLblChangePassWord() {
+        return getLblChangePassword().getText();
+    }
+
     public void changePass(String currentPass, String newPass, String confirmPass) {
         getTxtCurrentPassWord().sendKeys(currentPass);
         getTxtNewPassWord().sendKeys(newPass);

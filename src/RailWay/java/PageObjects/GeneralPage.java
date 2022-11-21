@@ -15,6 +15,10 @@ public class GeneralPage {
     private final By tabRegister = By.xpath("//a[@href='/Account/Register.cshtml']");
     private final By tabLogin = By.xpath("//a[@href='/Account/Login.cshtml']");
     private final By lblWelComeMessage = By.xpath("//div[@class='account']/strong");
+    private final By tabMyTicket = By.xpath("//a[@href='/Page/ManageTicket.cshtml']");
+    private final By tabChangePassWord = By.xpath("//a[@href='/Account/ChangePassword.cshtml']");
+    private final By tabLogout = By.xpath("//a[@href='/Account/Logout']");
+
     //           Elements
     protected WebElement getTabHome() {
         return Constant.WEBDRIVER.findElement(tabHome);
@@ -52,12 +56,37 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(lblWelComeMessage);
     }
 
+    protected WebElement getTabMyTicket() {
+        return Constant.WEBDRIVER.findElement(tabMyTicket);
+    }
+
+    protected WebElement getTabChangePassWord() {
+        return Constant.WEBDRIVER.findElement(tabChangePassWord);
+    }
+    protected WebElement getTabLogout(){return Constant.WEBDRIVER.findElement(tabLogout);}
+
     //            Method
-    public void gotoRegisterPage() {
+    public void clickRegisterTab() {
         this.getTabRegister().click();
     }
-    public void gotoLoginPage(){this.getTabLogin().click();}
-    public void gotoBookTicketPage(){this.getTabBookTicket().click();}
-    public void gotoTimeTablePage(){this.getTabTimeTable().click();}
+
+    public void clickLoginTab() {getTabLogin().click();}
+    public void clickLogoutTab(){getTabLogout().click();}
+    public void clickBookTicketTab() {
+        this.getTabBookTicket().click();
+    }
+
+    public void clickTimeTableTab() {
+        this.getTabTimeTable().click();
+    }
+
+    public void clickMyTicketTab() {
+        this.getTabMyTicket().click();
+    }
+
+    public void clickChangePassWordTab() {
+        getTabChangePassWord().click();
+    }
+
 
 }

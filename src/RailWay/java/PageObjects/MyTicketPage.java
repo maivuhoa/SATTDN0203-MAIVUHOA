@@ -7,14 +7,10 @@ import org.openqa.selenium.WebElement;
 
 public class MyTicketPage extends GeneralPage {
     // Locator
-    private final By tabMyTicket = By.xpath("//a[@href='/Page/ManageTicket.cshtml']");
     private final By lblManageTickets = By.xpath("//div[@id='content']/h1[text()='Manage Tickets']");
     private final By btnCancelTicket = By.xpath("//input[@value='Cancel']");
 
     // Elements
-    protected WebElement getTabMyTicket() {
-        return Constant.WEBDRIVER.findElement(tabMyTicket);
-    }
 
     protected WebElement getLblManageTickets() {
         return Constant.WEBDRIVER.findElement(lblManageTickets);
@@ -25,9 +21,6 @@ public class MyTicketPage extends GeneralPage {
     }
 
     //Methods
-    public void gotoMyTicketPage() {
-        this.getTabMyTicket().click();
-    }
 
     public void clickBtnCancelTicket() {
         Utilities.scrollIntoView(getBtnCancelButton());

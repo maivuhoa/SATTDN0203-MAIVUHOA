@@ -1,6 +1,6 @@
 package TestCases.login;
 
-import TestCases.SetUpBaseTest;
+import TestCases.BaseTest;
 import Common.utilities.Utilities;
 import PageObjects.*;
 import Common.constant.Constant;
@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class AdditionalPagesDisplayOnceUserLoggedin extends SetUpBaseTest {
+public class AdditionalPagesDisplayOnceUserLoggedin extends BaseTest {
     private static final Logger logger = LogManager.getLogger(AdditionalPagesDisplayOnceUserLoggedin.class);
 
     @Test
@@ -17,20 +17,19 @@ public class AdditionalPagesDisplayOnceUserLoggedin extends SetUpBaseTest {
         Utilities.getLog();
         logger.info("Step #1: Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-
         MyTicketPage myTicketPage = new MyTicketPage();
-        LogoutPage logoutPage = new LogoutPage();
         HomePage homePage = new HomePage();
+        GeneralPage generalPage = new GeneralPage();
         ChangePassWordPage changePassWordPage = new ChangePassWordPage();
-        loginPage.getTabLogin().click();
+        loginPage.clickLoginTab();
         logger.info("Step #2: Click on Login tab");
-        loginPage.testLogin(Constant.LOGIN_USERNAME, Constant.LOGIN_PASSWORD);
+        loginPage.loginAccount(Constant.LOGIN_USERNAME, Constant.LOGIN_PASSWORD);
         logger.info("Step #3: Login with valid account");
-        myTicketPage.gotoMyTicketPage();
+        myTicketPage.clickMyTicketTab();
         Assert.assertEquals(myTicketPage.getTextManageTicket(), "Manage Tickets");
-        changePassWordPage.gotoTabChangePassWord();
+        changePassWordPage.clickChangePassWordTab();
         Assert.assertEquals(changePassWordPage.getTextLblChangePassWord(), "Change password");
-        logoutPage.gotoTabLogout();
+        generalPage.clickLogoutTab();
         Assert.assertEquals(homePage.getTextLblWellComeRailWay(), "Welcome to Safe Railway");
         System.out.println("TC06- Additional pages display once user logged in");
     }

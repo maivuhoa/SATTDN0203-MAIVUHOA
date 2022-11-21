@@ -3,7 +3,6 @@ package PageObjects;
 import Common.constant.Constant;
 import Common.utilities.Utilities;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 public class RegisterPage extends GeneralPage {
@@ -36,10 +35,6 @@ public class RegisterPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(txtPID);
     }
 
-    protected WebElement getlblErrorPassNotMatch() {
-        return Constant.WEBDRIVER.findElement(lblErrorPassNotMatch);
-    }
-
     protected WebElement getLblErrorMessageForm() {
         return Constant.WEBDRIVER.findElement(lblErrorMessageForm);
     }
@@ -48,21 +43,11 @@ public class RegisterPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(btnRegister);
     }
 
-    protected WebElement getLblErrorEmail() {
-        return Constant.WEBDRIVER.findElement(lblErrorEmail);
-    }
-
     protected WebElement getRegisterSuccessMess() {
         return Constant.WEBDRIVER.findElement(lblRegisterSuccess);
     }
 
-    protected WebElement getLblWebHostingBy() {
-        return Constant.WEBDRIVER.findElement(lblWebHostingBy);
-    }
-
     //Methods
-    JavascriptExecutor js;
-
     public void testRegister(String UserName, String Password, String ConfirmPassword, String PID) {
         getTxtEmail().sendKeys(UserName);
         getTxtPassword().sendKeys(Password);
@@ -71,7 +56,16 @@ public class RegisterPage extends GeneralPage {
         Utilities.scrollIntoView(getBtnRegister());
         getBtnRegister().click();
     }
-    public String getTextLblErrorMessageForm(){return getLblErrorMessageForm().getText();}
-    public String getTextRegisterSuccessMess(){return getRegisterSuccessMess().getText();}
-    public void clickBtnRegister(){getBtnRegister().click();}
+
+    public String getTextLblErrorMessageForm() {
+        return getLblErrorMessageForm().getText();
+    }
+
+    public String getTextRegisterSuccessMess() {
+        return getRegisterSuccessMess().getText();
+    }
+
+    public void clickBtnRegister() {
+        getBtnRegister().click();
+    }
 }

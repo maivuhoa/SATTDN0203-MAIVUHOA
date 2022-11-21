@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigFileReader {
-    private Properties properties;
-    private final String propertyFilePath= Utilities.getProjectPath()+ "//src/RailWay/resources/configuration.properties";
+    private final Properties properties;
+    private final String propertyFilePath = Utilities.getProjectPath() + "//src/RailWay/resources/configuration.properties";
 
 
-    public ConfigFileReader(){
+    public ConfigFileReader() {
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(propertyFilePath));
@@ -30,27 +30,27 @@ public class ConfigFileReader {
         }
     }
 
-    public String getDriverPath(){
+    public String getDriverPath() {
         String driverPath = properties.getProperty("driverPath");
-        if(driverPath!= null) return driverPath;
+        if (driverPath != null) return driverPath;
         else throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
     }
 
     public long getImplicitlyWait() {
         String implicitlyWait = properties.getProperty("implicitlyWait");
-        if(implicitlyWait != null) return Long.parseLong(implicitlyWait);
+        if (implicitlyWait != null) return Long.parseLong(implicitlyWait);
         else throw new RuntimeException("implicitlyWait not specified in the Configuration.properties file.");
     }
 
     public String getApplicationUrl() {
         String url = properties.getProperty("RAILWAY_URL");
-        if(url != null) return url;
+        if (url != null) return url;
         else throw new RuntimeException("url not specified in the Configuration.properties file.");
     }
 
     public String getBrowser() {
         String browser = properties.getProperty("browser");
-        if(browser != null) return browser;
+        if (browser != null) return browser;
         else throw new RuntimeException("browser not specified in the Configuration.properties file.");
     }
 }

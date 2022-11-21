@@ -2,13 +2,13 @@ package TestCases.register;
 
 import Common.utilities.Utilities;
 import PageObjects.RegisterPage;
-import TestCases.SetUpBaseTest;
+import TestCases.BaseTest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class RegisterNewAccountSuccess extends SetUpBaseTest {
+public class RegisterNewAccountSuccess extends BaseTest {
     private static final Logger logger = LogManager.getLogger(RegisterNewAccountSuccess.class);
 
     @Test(dataProvider = "Valid Email Length")
@@ -16,7 +16,7 @@ public class RegisterNewAccountSuccess extends SetUpBaseTest {
         Utilities.getLog();
         logger.info("Step #1: Register new account");
         RegisterPage registerPage = new RegisterPage();
-        registerPage.gotoRegisterPage();
+        registerPage.clickRegisterTab();
         logger.info("Step #2: Click on Register tab");
         String password = Utilities.generateRandomString(8);
         String email = Utilities.generateRandomEmail(len);

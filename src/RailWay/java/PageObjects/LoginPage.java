@@ -27,14 +27,6 @@ public class LoginPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(btnLogin);
     }
 
-    protected WebElement getTxtMessError() {
-        return Constant.WEBDRIVER.findElement(lblLoginErrorMessage);
-    }
-
-    protected WebElement getLblValidationErrorEmail() {
-        return Constant.WEBDRIVER.findElement(lblValidationErrorEmail);
-    }
-
     protected WebElement getLblErrorMessageLogin() {
         return Constant.WEBDRIVER.findElement(lblErrorMessageLogin);
     }
@@ -43,23 +35,31 @@ public class LoginPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(lblLoginPage);
     }
 
-    //  Methods
-    public void testLogin(String username, String PassWord) {
-        getTxtUserName().sendKeys(username);
-        getTxtPassWord().sendKeys(PassWord);
-        getBtnLogin().click();
-    }
-
-    public WebElement getWellComeMes() {
+    protected WebElement getWellComeMes() {
         return getLblWellComeMessage();
     }
 
-    public WebElement getTabLogin() {
-        return super.getTabLogin();
+    //  Methods
+    public void loginAccount(String username, String PassWord) {
+        getTxtUserName().sendKeys(username);
+        getTxtPassWord().sendKeys(PassWord);
+        clickBtnLogin();
     }
-    public WebElement getElementBtnLogin(){return getBtnLogin();}
-    public String getTextLblLogin(){return getLblLoginPage().getText();}
-    public String getTextLblErrorMessageLogin(){return getLblErrorMessageLogin().getText();}
-    public void clickBtnLogin(){getBtnLogin().click();}
+
+    public String getTextLblLogin() {
+        return getLblLoginPage().getText();
+    }
+
+    public String getTextLblErrorMessageLogin() {
+        return getLblErrorMessageLogin().getText();
+    }
+
+    public void clickBtnLogin() {
+        getBtnLogin().click();
+    }
+
+    public String getTextWellCome() {
+        return getWellComeMes().getText();
+    }
 
 }

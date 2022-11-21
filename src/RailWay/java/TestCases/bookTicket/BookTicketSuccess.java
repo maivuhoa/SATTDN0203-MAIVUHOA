@@ -5,22 +5,22 @@ import Common.constant.Station;
 import Common.utilities.Utilities;
 import PageObjects.BookTicketPage;
 import PageObjects.LoginPage;
-import TestCases.SetUpBaseTest;
+import TestCases.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class BookTicketSuccess extends SetUpBaseTest {
+public class BookTicketSuccess extends BaseTest {
     @Test
     public void bookTicketSuccessfully() {
         registerNewAccount();
         LoginPage loginPage = new LoginPage();
-        loginPage.gotoLoginPage();
-        loginPage.testLogin(getEmail(),getPassword());
+        loginPage.clickLoginTab();
+        loginPage.loginAccount(getEmail(), getPassword());
         BookTicketPage bookTicketPage = new BookTicketPage();
-        bookTicketPage.gotoBookTicketPage();
+        bookTicketPage.clickBookTicketTab();
         String departDate = Utilities.randomNumber();
         String departDayValue = bookTicketPage.getValueDateDepart(departDate);
-        bookTicketPage.bookTicketKetSuccess(departDate, Station.SAIGON, Station.NHATRANG, SeatType.SBWAC, "1");
+        bookTicketPage.bookTicketKetSuccess(departDate,Station.SAIGON.getStation(), Station.NHATRANG.getStation(), SeatType.SBWAC.getSeatType(), "1");
         Assert.assertEquals(bookTicketPage.getTextLblBookTicketSuccess(), "Ticket Booked Successfully!");
         Assert.assertEquals(departDayValue, bookTicketPage.getTextInformationTicket("Depart Date"));
         Assert.assertEquals(Station.SAIGON.getStation(), bookTicketPage.getTextInformationTicket("Depart Station"));

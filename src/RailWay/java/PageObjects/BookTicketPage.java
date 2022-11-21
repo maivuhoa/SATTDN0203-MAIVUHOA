@@ -1,8 +1,6 @@
 package PageObjects;
 
 import Common.constant.Constant;
-import Common.constant.SeatType;
-import Common.constant.Station;
 import Common.utilities.Utilities;
 import TestCases.changePassword.ChangePassWordTest;
 import org.apache.log4j.LogManager;
@@ -12,6 +10,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class BookTicketPage extends GeneralPage {
+    private String strXPathSelectDropdown = "//div[@id='content']//select[@name='";
+    private String strDepartDate = "//select[@name='Date']//option[@value='";
+    private String strWideTable = "//table[@class='MyTable WideTable']//td[count(//th[text()='";
+    private String strWideTableSibling = "']/preceding-sibling::th)+1]";
+    private String strDepartFrom = "//div[@id='content']//select[@name='DepartStation']";
+    private String strArriveAt = "//div[@id='content']//select[@name='ArriveStation']";
     //Locator
     private final By btnBookTicket = By.xpath("//form[@method='post']//input[@type='submit']");
     private final By lblBookTicketSuccessfully = By.xpath("//div[@id='content']//h1[@align='center']");
@@ -26,32 +30,32 @@ public class BookTicketPage extends GeneralPage {
     }
 
     protected WebElement dynamicLocatorForDropDown(String elementName) {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//select[@name='" + elementName + "']"));
+        return Constant.WEBDRIVER.findElement(By.xpath(strXPathSelectDropdown + elementName + "']"));
     }
 
     protected WebElement dynamicLocatorForDepartDate(String value) {
-        return Constant.WEBDRIVER.findElement(By.xpath("//select[@name='Date']//option[@value='" + value + "']"));
+        return Constant.WEBDRIVER.findElement(By.xpath(strDepartDate + value + "']"));
     }
 
     protected WebElement dynamicLocatorForTicket(String value) {
-        return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable WideTable']//td[count(//th[text()=" + "'" + value + "'" + "]/preceding-sibling::th)+1]"));
+        return Constant.WEBDRIVER.findElement(By.xpath(strWideTable + value + strWideTableSibling));
     }
 
     protected WebElement dynamicLocatorDepartFrom() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//select[@name='DepartStation']"));
+        return Constant.WEBDRIVER.findElement(By.xpath(strDepartFrom));
     }
 
     protected WebElement dynamicLocatorArriveAt() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//select[@name='ArriveStation']"));
+        return Constant.WEBDRIVER.findElement(By.xpath(strArriveAt));
+    }
+
+    public WebElement getElementBtnBookTicket() {
+        return getBtnBookTicket();
     }
 
     //Methods
     public String getTextLblBookTicketSuccess() {
         return getLblBookTicketSuccess().getText();
-    }
-
-    public WebElement getTextBtnBookTicket() {
-        return getBtnBookTicket();
     }
 
     public String getTextInformationTicket(String value) {
@@ -74,41 +78,24 @@ public class BookTicketPage extends GeneralPage {
         return getValueArriveAt().getFirstSelectedOption().getText();
     }
 
+    public String getValueDateDepart(String value) {
+        return dynamicLocatorForDepartDate(value).getText();
+    }
+
+
     public void selectDate(String dateDepart) {
         WebElement element = dynamicLocatorForDropDown("Date");
         Select select = new Select(element);
         select.selectByValue(dateDepart);
     }
 
-    public String getValueDateDepart(String value) {
-        return dynamicLocatorForDepartDate(value).getText();
-    }
-
-    public void selectDepartFrom(String departFrom) {
-        WebElement element = dynamicLocatorForDropDown("DepartStation");
+    public void selectTicketInfo(String comboBoxName, String Value) {
+        WebElement element = dynamicLocatorForDropDown(comboBoxName);
         Select select = new Select(element);
-        select.selectByVisibleText(departFrom);
+        select.selectByVisibleText(Value);
     }
 
-    public void selectArriveAt(String arriveAt) {
-        WebElement element = dynamicLocatorForDropDown("ArriveStation");
-        Select select = new Select(element);
-        select.selectByVisibleText(arriveAt);
-    }
-
-    public void selectSeatType(String seatType) {
-        WebElement element = dynamicLocatorForDropDown("SeatType");
-        Select select = new Select(element);
-        select.selectByVisibleText(seatType);
-    }
-
-    public void selectTicketAmount(String ticketAmount) {
-        WebElement element = dynamicLocatorForDropDown("TicketAmount");
-        Select select = new Select(element);
-        select.selectByValue(ticketAmount);
-    }
-
-    public void bookTicketKetSuccess(String SelectDate, Station SelectDepartFrom, Station SelectArrive, SeatType SeatType, String Amount) {
+    public void bookTicketKetSuccess(String SelectDate, String SelectDepartFrom, String SelectArrive, String SeatType, String Amount) {
         final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
 
         Utilities.getLog();
@@ -116,13 +103,13 @@ public class BookTicketPage extends GeneralPage {
         logger.info("Login with a valid account");
         selectDate(SelectDate);
         logger.info("Select a Depart date from the list");
-        selectDepartFrom(SelectDepartFrom.getStation());
+        selectTicketInfo("DepartStation", SelectDepartFrom);
         logger.info("Select Sài Gòn for Depart from");
-        selectArriveAt(SelectArrive.getStation());
+        selectTicketInfo("ArriveStation", SelectArrive);
         logger.info("Select Nha Trang for Arrive at");
-        selectSeatType(SeatType.getSeatType());
+        selectTicketInfo("SeatType", SeatType);
         logger.info("Select Soft bed with air conditioner for Seat type");
-        selectTicketAmount(Amount);
+        selectTicketInfo("TicketAmount", Amount);
         logger.info("Select 1 for Ticket amount");
         Utilities.scrollIntoView(getBtnBookTicket());
         getBtnBookTicket().click();
