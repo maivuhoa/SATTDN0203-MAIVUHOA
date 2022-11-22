@@ -63,15 +63,24 @@ public class GeneralPage {
     protected WebElement getTabChangePassWord() {
         return Constant.WEBDRIVER.findElement(tabChangePassWord);
     }
-    protected WebElement getTabLogout(){return Constant.WEBDRIVER.findElement(tabLogout);}
+
+    protected WebElement getTabLogout() {
+        return Constant.WEBDRIVER.findElement(tabLogout);
+    }
 
     //            Method
     public void clickRegisterTab() {
         this.getTabRegister().click();
     }
 
-    public void clickLoginTab() {getTabLogin().click();}
-    public void clickLogoutTab(){getTabLogout().click();}
+    public void clickLoginTab() {
+        getTabLogin().click();
+    }
+
+    public void clickLogoutTab() {
+        getTabLogout().click();
+    }
+
     public void clickBookTicketTab() {
         this.getTabBookTicket().click();
     }
@@ -87,6 +96,5 @@ public class GeneralPage {
     public void clickChangePassWordTab() {
         getTabChangePassWord().click();
     }
-
 
 }

@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class RegisterPage extends GeneralPage {
+    private String email;
+    private String password;
     //Locator
     private final By txtEmail = By.xpath("//li//input[@id='email']");
     private final By txtPassword = By.xpath("//li//input[@id='password']");
@@ -19,31 +21,31 @@ public class RegisterPage extends GeneralPage {
     private final By lblErrorMessageForm = By.xpath("//div[@id='content']//p[@class='message error']");
 
     //Elements
-    protected WebElement getTxtEmail() {
+    private WebElement getTxtEmail() {
         return Constant.WEBDRIVER.findElement(txtEmail);
     }
 
-    protected WebElement getTxtPassword() {
+    private WebElement getTxtPassword() {
         return Constant.WEBDRIVER.findElement(txtPassword);
     }
 
-    protected WebElement getTxtConfirmPassword() {
+    private WebElement getTxtConfirmPassword() {
         return Constant.WEBDRIVER.findElement(txtConfirmPassword);
     }
 
-    protected WebElement getTxtPID() {
+    private WebElement getTxtPID() {
         return Constant.WEBDRIVER.findElement(txtPID);
     }
 
-    protected WebElement getLblErrorMessageForm() {
+    private WebElement getLblErrorMessageForm() {
         return Constant.WEBDRIVER.findElement(lblErrorMessageForm);
     }
 
-    protected WebElement getBtnRegister() {
+    private WebElement getBtnRegister() {
         return Constant.WEBDRIVER.findElement(btnRegister);
     }
 
-    protected WebElement getRegisterSuccessMess() {
+    private WebElement getRegisterSuccessMess() {
         return Constant.WEBDRIVER.findElement(lblRegisterSuccess);
     }
 
@@ -68,4 +70,22 @@ public class RegisterPage extends GeneralPage {
     public void clickBtnRegister() {
         getBtnRegister().click();
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void registerNewAccount() {
+        password = Utilities.generateRandomString(8);
+        email = Utilities.generateRandomEmail(10);
+        String newPID = Utilities.generateRandomString(10);
+        RegisterPage registerPage = new RegisterPage();
+        registerPage.clickRegisterTab();
+        registerPage.testRegister(email, password, password, newPID);
+    }
+
 }

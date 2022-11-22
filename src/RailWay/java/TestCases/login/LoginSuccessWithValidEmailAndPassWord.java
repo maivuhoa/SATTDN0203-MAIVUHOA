@@ -2,17 +2,20 @@ package TestCases.login;
 
 import Common.constant.Constant;
 import Common.utilities.Utilities;
+import Common.utilities.listeners.ReportListener;
 import PageObjects.LoginPage;
 import TestCases.BaseTest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(ReportListener.class)
 public class LoginSuccessWithValidEmailAndPassWord extends BaseTest {
     private static final Logger logger = LogManager.getLogger(LoginSuccessWithValidEmailAndPassWord.class);
 
-    @Test()
+    @Test(description = "TC01 : User can log into Railway with valid username and password")
     public void testLoginSuccessWithValidAccount() {
         Utilities.getLog();
         logger.info("Step #1: Navigate to QA Railway Website");

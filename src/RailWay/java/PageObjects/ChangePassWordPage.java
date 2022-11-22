@@ -14,27 +14,27 @@ public class ChangePassWordPage extends GeneralPage {
     private final By lblChangePassword = By.xpath("//h1[text()='Change password']");
 
     //Elements
-    protected WebElement getTxtCurrentPassWord() {
+    private WebElement getTxtCurrentPassWord() {
         return Constant.WEBDRIVER.findElement(txtCurrentPassWord);
     }
 
-    protected WebElement getTxtNewPassWord() {
+    private WebElement getTxtNewPassWord() {
         return Constant.WEBDRIVER.findElement(txtNewPassWord);
     }
 
-    protected WebElement getTxtConfirmPassWord() {
+    private WebElement getTxtConfirmPassWord() {
         return Constant.WEBDRIVER.findElement(txtConfirmPassWord);
     }
 
-    protected WebElement getBtnChangePassWord() {
+    private WebElement getBtnChangePassWord() {
         return Constant.WEBDRIVER.findElement(btnChangePassWord);
     }
 
-    protected WebElement getMessageSuccessChangePass() {
+    private WebElement getMessageSuccessChangePass() {
         return Constant.WEBDRIVER.findElement(lblSuccessChangePass);
     }
 
-    protected WebElement getLblChangePassword() {
+    private WebElement getLblChangePassword() {
         return Constant.WEBDRIVER.findElement(lblChangePassword);
     }
 

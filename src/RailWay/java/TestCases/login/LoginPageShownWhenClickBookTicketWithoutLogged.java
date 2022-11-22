@@ -11,7 +11,7 @@ import org.testng.annotations.*;
 public class LoginPageShownWhenClickBookTicketWithoutLogged extends BaseTest {
     private static final Logger logger = LogManager.getLogger(LoginPageShownWhenClickBookTicketWithoutLogged.class);
 
-    @Test()
+    @Test(description = "TC04 : Login page displays when un-logged User clicks on Book ticket tab")
     public void testLoginPageShownWhenUserClickBookTicketTabWithoutLogged() {
         Utilities.getLog();
         logger.info("Step #1: Navigate to QA Railway Website");

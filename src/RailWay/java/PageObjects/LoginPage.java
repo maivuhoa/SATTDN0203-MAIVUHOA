@@ -15,27 +15,27 @@ public class LoginPage extends GeneralPage {
     private final By lblLoginPage = By.xpath("//div[@id='content']/h1[@align='center']");
 
     // Elements
-    protected WebElement getTxtUserName() {
+    private WebElement getTxtUserName() {
         return Constant.WEBDRIVER.findElement(txtUserName);
     }
 
-    protected WebElement getTxtPassWord() {
+    private WebElement getTxtPassWord() {
         return Constant.WEBDRIVER.findElement(txtPassWord);
     }
 
-    protected WebElement getBtnLogin() {
+    private WebElement getBtnLogin() {
         return Constant.WEBDRIVER.findElement(btnLogin);
     }
 
-    protected WebElement getLblErrorMessageLogin() {
+    private WebElement getLblErrorMessageLogin() {
         return Constant.WEBDRIVER.findElement(lblErrorMessageLogin);
     }
 
-    protected WebElement getLblLoginPage() {
+    private WebElement getLblLoginPage() {
         return Constant.WEBDRIVER.findElement(lblLoginPage);
     }
 
-    protected WebElement getWellComeMes() {
+    private WebElement getWellComeMes() {
         return getLblWellComeMessage();
     }
 

@@ -2,15 +2,13 @@ package PageObjects;
 
 import Common.constant.Constant;
 import Common.utilities.Utilities;
-import TestCases.changePassword.ChangePassWordTest;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class BookTicketPage extends GeneralPage {
     private String strXPathSelectDropdown = "//div[@id='content']//select[@name='";
+    private String strEndString = "']";
     private String strDepartDate = "//select[@name='Date']//option[@value='";
     private String strWideTable = "//table[@class='MyTable WideTable']//td[count(//th[text()='";
     private String strWideTableSibling = "']/preceding-sibling::th)+1]";
@@ -21,39 +19,43 @@ public class BookTicketPage extends GeneralPage {
     private final By lblBookTicketSuccessfully = By.xpath("//div[@id='content']//h1[@align='center']");
 
     //Elements
-    protected WebElement getBtnBookTicket() {
+    private WebElement getBtnBookTicket() {
         return Constant.WEBDRIVER.findElement(btnBookTicket);
     }
 
-    protected WebElement getLblBookTicketSuccess() {
+    private WebElement getLblBookTicketSuccess() {
         return Constant.WEBDRIVER.findElement(lblBookTicketSuccessfully);
     }
 
-    protected WebElement dynamicLocatorForDropDown(String elementName) {
-        return Constant.WEBDRIVER.findElement(By.xpath(strXPathSelectDropdown + elementName + "']"));
+    private WebElement dynamicLocatorForDropDown(String value) {
+        return Constant.WEBDRIVER.findElement(By.xpath(strFormat(value, strXPathSelectDropdown, strEndString)));
     }
 
-    protected WebElement dynamicLocatorForDepartDate(String value) {
-        return Constant.WEBDRIVER.findElement(By.xpath(strDepartDate + value + "']"));
+    private WebElement dynamicLocatorForDepartDate(String value) {
+        return Constant.WEBDRIVER.findElement(By.xpath(strFormat(value, strDepartDate, strEndString)));
     }
 
-    protected WebElement dynamicLocatorForTicket(String value) {
-        return Constant.WEBDRIVER.findElement(By.xpath(strWideTable + value + strWideTableSibling));
+    private WebElement dynamicLocatorForTicket(String value) {
+        return Constant.WEBDRIVER.findElement(By.xpath(strFormat(value, strWideTable, strWideTableSibling)));
     }
 
-    protected WebElement dynamicLocatorDepartFrom() {
+    private WebElement dynamicLocatorDepartFrom() {
         return Constant.WEBDRIVER.findElement(By.xpath(strDepartFrom));
     }
 
-    protected WebElement dynamicLocatorArriveAt() {
+    private WebElement dynamicLocatorArriveAt() {
         return Constant.WEBDRIVER.findElement(By.xpath(strArriveAt));
+    }
+
+    //Methods
+    protected String strFormat(String value, String str1, String str2) {
+        return String.format("%1$s" + value + "%2$s", str1, str2);
     }
 
     public WebElement getElementBtnBookTicket() {
         return getBtnBookTicket();
     }
 
-    //Methods
     public String getTextLblBookTicketSuccess() {
         return getLblBookTicketSuccess().getText();
     }
@@ -96,23 +98,12 @@ public class BookTicketPage extends GeneralPage {
     }
 
     public void bookTicketKetSuccess(String SelectDate, String SelectDepartFrom, String SelectArrive, String SeatType, String Amount) {
-        final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
-
-        Utilities.getLog();
-        logger.info("Navigate to QA Railway Website");
-        logger.info("Login with a valid account");
         selectDate(SelectDate);
-        logger.info("Select a Depart date from the list");
         selectTicketInfo("DepartStation", SelectDepartFrom);
-        logger.info("Select Sài Gòn for Depart from");
         selectTicketInfo("ArriveStation", SelectArrive);
-        logger.info("Select Nha Trang for Arrive at");
         selectTicketInfo("SeatType", SeatType);
-        logger.info("Select Soft bed with air conditioner for Seat type");
         selectTicketInfo("TicketAmount", Amount);
-        logger.info("Select 1 for Ticket amount");
         Utilities.scrollIntoView(getBtnBookTicket());
         getBtnBookTicket().click();
-        logger.info("Click on Book ticket button");
     }
 }

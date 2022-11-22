@@ -46,6 +46,5 @@ public class Utilities {
     public static String randomNumber() {
         int randomDate = 3 + (int) (Math.random() * (30 - 4) + 1);
         return Integer.toString(randomDate);
-
     }
 }

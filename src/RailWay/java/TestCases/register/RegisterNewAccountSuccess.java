@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class RegisterNewAccountSuccess extends BaseTest {
     private static final Logger logger = LogManager.getLogger(RegisterNewAccountSuccess.class);
 
-    @Test(dataProvider = "Valid Email Length")
+    @Test(dataProvider = "validEmailLength")
     public void testRegisterSuccess(int len) {
         Utilities.getLog();
         logger.info("Step #1: Register new account");

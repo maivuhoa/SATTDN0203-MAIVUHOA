@@ -17,4 +17,5 @@ public class HomePage extends GeneralPage {
     public String getTextLblWellComeRailWay() {
         return getLblWellComeRailWay().getText();
     }
+
 }

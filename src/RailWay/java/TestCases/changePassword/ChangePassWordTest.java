@@ -1,6 +1,7 @@
 package TestCases.changePassword;
 
 import Common.utilities.Utilities;
+import Common.utilities.listeners.ReportListener;
 import PageObjects.ChangePassWordPage;
 import PageObjects.LoginPage;
 import PageObjects.RegisterPage;
@@ -8,12 +9,14 @@ import TestCases.BaseTest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(ReportListener.class)
 public class ChangePassWordTest extends BaseTest {
     private static final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
 
-    @Test
+    @Test(description = "TC09 : User can change password")
     public void testChangePassWordSuccess() {
         String password = Utilities.generateRandomString(8);
         String email = Utilities.generateRandomEmail(10);

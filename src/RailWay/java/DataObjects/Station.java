@@ -1,4 +1,4 @@
-package Common.constant;
+package DataObjects;
 
 public enum Station {
     SAIGON("Sài Gòn"),

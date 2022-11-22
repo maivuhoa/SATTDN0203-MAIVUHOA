@@ -12,11 +12,11 @@ public class MyTicketPage extends GeneralPage {
 
     // Elements
 
-    protected WebElement getLblManageTickets() {
+    private WebElement getLblManageTickets() {
         return Constant.WEBDRIVER.findElement(lblManageTickets);
     }
 
-    protected WebElement getBtnCancelButton() {
+    private WebElement getBtnCancelButton() {
         return Constant.WEBDRIVER.findElement(btnCancelTicket);
     }
 
@@ -25,7 +25,6 @@ public class MyTicketPage extends GeneralPage {
     public void clickBtnCancelTicket() {
         Utilities.scrollIntoView(getBtnCancelButton());
         getBtnCancelButton().click();
-
     }
 
     public String getTextManageTicket() {
