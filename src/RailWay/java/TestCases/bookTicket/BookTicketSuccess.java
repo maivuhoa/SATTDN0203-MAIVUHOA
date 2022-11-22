@@ -4,28 +4,30 @@ import Common.constant.Constant;
 import Common.utilities.Utilities;
 import PageObjects.BookTicketPage;
 import PageObjects.LoginPage;
-import PageObjects.RegisterPage;
 import TestCases.SetUpBaseTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import TestCases.register.RegisterNewAccountSuccess;
 
-public class BookTicketSuccess extends RegisterNewAccountSuccess {
-
+public class BookTicketSuccess extends SetUpBaseTest {
     @Test
     public void bookTicketSuccessfully() {
-        RegisterNewAccountSuccess registerNewAccountSuccess = new RegisterNewAccountSuccess();
-        registerNewAccountSuccess.testRegisterSuccess(8);
         LoginPage loginPage = new LoginPage();
         loginPage.gotoLoginPage();
         loginPage.testLogin(Constant.LOGIN_USERNAME, Constant.LOGIN_PASSWORD);
-        loginPage.getBtnLogin().click();
         BookTicketPage bookTicketPage = new BookTicketPage();
         bookTicketPage.gotoBookTicketPage();
-        bookTicketPage.selectDate();
-        bookTicketPage.selectDepartFrom();
-        bookTicketPage.selectArriveAt();
-        bookTicketPage.selectSeatType();
-        bookTicketPage.selectTicketAmount();
+        String departDate = Utilities.randomNumber();
+        String departDayValue = bookTicketPage.getValueDateDepart(departDate);
+
+        bookTicketPage.bookTicketKetSuccess(departDate, "1", "3", "6", "1");
+
+        Assert.assertEquals(bookTicketPage.getTextLblBookTicketSuccess(), "Ticket Booked Successfully!");
+        Assert.assertEquals(departDayValue, bookTicketPage.getTextInformationTicket("Depart Date"));
+        Assert.assertEquals("Sài Gòn", bookTicketPage.getTextInformationTicket("Depart Station"));
+        Assert.assertEquals("Nha Trang", bookTicketPage.getTextInformationTicket("Arrive Station"));
+        Assert.assertEquals("Soft bed with air conditioner", bookTicketPage.getTextInformationTicket("Seat Type"));
+        Assert.assertEquals("1", bookTicketPage.getTextInformationTicket("Amount"));
+        System.out.println("TC14- User can book 1 ticket at a time");
 
     }
 }

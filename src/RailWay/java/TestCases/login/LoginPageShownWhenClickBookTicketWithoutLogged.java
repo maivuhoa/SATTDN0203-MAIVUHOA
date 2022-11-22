@@ -11,12 +11,6 @@ import org.testng.annotations.*;
 public class LoginPageShownWhenClickBookTicketWithoutLogged extends SetUpBaseTest {
     private static final Logger logger = LogManager.getLogger(LoginPageShownWhenClickBookTicketWithoutLogged.class);
 
-
-    @BeforeMethod
-    public void beforeTesting() {
-        super.beforeTest();
-    }
-
     @Test()
     public void testLoginPageShownWhenUserClickBookTicketTabWithoutLogged() {
         Utilities.getLog();
@@ -27,10 +21,5 @@ public class LoginPageShownWhenClickBookTicketWithoutLogged extends SetUpBaseTes
         logger.info("Step #2: Click on Book ticket tab");
         Assert.assertEquals(loginPage.getTxtLoginPage().getText(), "Login Page");
         System.out.println("TC04- Login page displays when un-logged User clicks on Book ticket tab");
-    }
-
-    @AfterMethod
-    public void afterTesting() {
-        super.afterTest();
     }
 }

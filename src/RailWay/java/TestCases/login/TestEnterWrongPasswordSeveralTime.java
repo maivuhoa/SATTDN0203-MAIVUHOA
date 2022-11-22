@@ -12,12 +12,6 @@ import org.testng.annotations.*;
 public class TestEnterWrongPasswordSeveralTime extends SetUpBaseTest {
     private static final Logger logger = LogManager.getLogger(TestEnterWrongPasswordSeveralTime.class);
 
-
-    @BeforeMethod
-    public void beforeTesting() {
-        super.beforeTest();
-    }
-
     @Test()
     public void testEnterWrongPasswordSeveralTime() {
         Utilities.getLog();
@@ -33,11 +27,5 @@ public class TestEnterWrongPasswordSeveralTime extends SetUpBaseTest {
         logger.info("Step #3: Enter valid information into Username textbox except Password textbox.");
         Assert.assertEquals(loginPage.getPErrorMessageLogin().getText(), "You have used 4 out of 5 login attempts. After all 5 have been used, you will be unable to login for 15 minutes.");
         System.out.println("TC05- System shows message when user enters wrong password several times");
-
-    }
-
-    @AfterMethod
-    public void afterTesting() {
-        super.afterTest();
     }
 }

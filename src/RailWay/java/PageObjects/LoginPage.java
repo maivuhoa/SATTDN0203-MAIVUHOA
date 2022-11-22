@@ -53,6 +53,7 @@ public class LoginPage extends GeneralPage {
     public void testLogin(String username, String PassWord) {
         getTxtUserName().sendKeys(username);
         getTxtPassWord().sendKeys(PassWord);
+        getBtnLogin().click();
     }
 
     public WebElement getWellComeMes() {

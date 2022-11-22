@@ -12,11 +12,6 @@ import org.apache.log4j.Logger;
 public class ChangePassWordTest extends SetUpBaseTest {
     private static final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
 
-    @BeforeMethod
-    public void setup() {
-        super.beforeTest();
-    }
-
     @Test
     public void testChangePassWordSuccess() {
         String password = Utilities.generateRandomString(8);
@@ -32,7 +27,7 @@ public class ChangePassWordTest extends SetUpBaseTest {
         loginPage.gotoLoginPage();
         logger.info("Step #2: Navigate to Login page");
         loginPage.testLogin(email, password);
-        loginPage.getBtnLogin().click();
+        System.out.println(password);
         logger.info("Step #3: Login with new account");
         ChangePassWordPage changePassWordPage = new ChangePassWordPage();
         changePassWordPage.gotoTabChangePassWord();
@@ -41,10 +36,5 @@ public class ChangePassWordTest extends SetUpBaseTest {
         logger.info("Step #5: Change password");
         Assert.assertEquals(changePassWordPage.getMessageSuccessChangePass().getText(), "Your password has been updated!");
         System.out.println("TC09- User can change password");
-    }
-
-    @AfterMethod
-    public void afterMethod() {
-        super.afterTest();
     }
 }
