@@ -7,7 +7,6 @@ import PageObjects.LoginPage;
 import PageObjects.MyTicketPage;
 import PageObjects.RegisterPage;
 import TestCases.BaseTest;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -26,11 +25,10 @@ public class CancelTicket extends BaseTest {
         loginPage.loginAccount(registerPage.getEmail(), registerPage.getPassword());
         bookTicketPage.clickBookTicketTab();
         bookTicketPage.bookTicketKetSuccess(departDate, "Sài Gòn", "Nha Trang", "Soft bed with air conditioner", "1");
+        String idTicket = bookTicketPage.getIDTicket();
         myTicketPage.clickMyTicketTab();
-        myTicketPage.clickBtnCancelTicket();
+        myTicketPage.clickBtnCancelTicket(idTicket);
         myTicketPage.acceptOKCancel();
-        String myTableIsDisplayed = String.valueOf(myTicketPage.isElementPresent(By.xpath("//table[@class='MyTable']")));
-        Assert.assertEquals(myTableIsDisplayed, "false");
-        System.out.println("TC16- User can cancel a ticket");
+        Assert.assertFalse(myTicketPage.isElementPresent(idTicket));
     }
 }

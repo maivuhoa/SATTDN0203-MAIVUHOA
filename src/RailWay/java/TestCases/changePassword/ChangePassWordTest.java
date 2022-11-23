@@ -25,7 +25,7 @@ public class ChangePassWordTest extends BaseTest {
         RegisterPage registerPage = new RegisterPage();
         registerPage.clickRegisterTab();
         Utilities.getLog();
-        registerPage.testRegister(email, password, password, pid);
+        registerPage.register(email, password, password, pid);
         logger.info("Step #1: Register new account");
         LoginPage loginPage = new LoginPage();
         loginPage.clickLoginTab();
@@ -38,6 +38,5 @@ public class ChangePassWordTest extends BaseTest {
         changePassWordPage.changePass(password, newPassword, newPassword);
         logger.info("Step #5: Change password");
         Assert.assertEquals(changePassWordPage.getTextChangePassSuccess(), "Your password has been updated!");
-        System.out.println("TC09- User can change password");
     }
 }

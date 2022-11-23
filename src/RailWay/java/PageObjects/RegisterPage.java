@@ -15,9 +15,6 @@ public class RegisterPage extends GeneralPage {
     private final By txtPID = By.xpath("//li//input[@id='pid']");
     private final By btnRegister = By.xpath("//p[@class='form-actions']/input[@type='submit']");
     private final By lblRegisterSuccess = By.xpath("//div[@id='content']/p");
-    private final By lblWebHostingBy = By.xpath("//center/a[@href=\"http://somee.com\"]");
-    private final By lblErrorEmail = By.xpath("//label[text()='Invalid email length']");
-    private final By lblErrorPassNotMatch = By.xpath("//form[@id='RegisterForm']//label[@class='validation-error']");
     private final By lblErrorMessageForm = By.xpath("//div[@id='content']//p[@class='message error']");
 
     //Elements
@@ -50,7 +47,7 @@ public class RegisterPage extends GeneralPage {
     }
 
     //Methods
-    public void testRegister(String UserName, String Password, String ConfirmPassword, String PID) {
+    public void register(String UserName, String Password, String ConfirmPassword, String PID) {
         getTxtEmail().sendKeys(UserName);
         getTxtPassword().sendKeys(Password);
         getTxtConfirmPassword().sendKeys(ConfirmPassword);
@@ -85,7 +82,7 @@ public class RegisterPage extends GeneralPage {
         String newPID = Utilities.generateRandomString(10);
         RegisterPage registerPage = new RegisterPage();
         registerPage.clickRegisterTab();
-        registerPage.testRegister(email, password, password, newPID);
+        registerPage.register(email, password, password, newPID);
     }
 
 }

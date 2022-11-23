@@ -6,20 +6,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class TimeTablePage extends GeneralPage {
-    private String strTdText = "//td[text()='";
-    private String strSiblingTdText = "']/following-sibling::td[text()='";
-    private String strContainHref = "']/..//a[contains(@href, 'Book')]";
+    private String strTimeTable = "//td[text()='%s']/following-sibling::td[text()='%s']/..//a[contains(@href, 'Book')]";
     //Locator
     private final By tabTimeTable = By.xpath("//a[@href='TrainTimeListPage.cshtml']");
 
     //Elements
     private WebElement dynamicLocatorForBookticket(String departFrom, String arriveAt) {
-        return Constant.WEBDRIVER.findElement(By.xpath(strFormatTimeTable(departFrom, arriveAt, strTdText, strSiblingTdText, strContainHref)));
+        return Constant.WEBDRIVER.findElement(By.xpath(strFormatTimeTable(departFrom, arriveAt)));
     }
 
     //Methods
-    protected String strFormatTimeTable(String valueDepart, String valueArrive, String str1, String str2, String str3) {
-        return String.format("%1$s" + valueDepart + "%2$s" + valueArrive + "%3$s", str1, str2, str3);
+    protected String strFormatTimeTable(String valueDepart, String valueArrive) {
+        return String.format(strTimeTable, valueDepart, valueArrive);
     }
 
     public void selectDepartFromAndArrive() {

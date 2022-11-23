@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 public class RegisterUnsuccessWithPasswordNotMatch extends BaseTest {
     private static final Logger logger = LogManager.getLogger(RegisterUnsuccessWithPasswordNotMatch.class);
 
-    @Test
+    @Test(description = "TC-10: User can't create account with Confirm password is not the same with Password")
     public void testRegisterUnSuccessWithPassNotMatch() {
         DriverManager.open();
         Utilities.getLog();
@@ -24,9 +24,8 @@ public class RegisterUnsuccessWithPasswordNotMatch extends BaseTest {
         String confirmPass = Utilities.generateRandomString(9);
         String email = Utilities.generateRandomEmail(8);
         String PID = Utilities.generateRandomString(8);
-        registerPage.testRegister(email, password, confirmPass, PID);
+        registerPage.register(email, password, confirmPass, PID);
         logger.info("Step #3: Enter valid information into all fields except Confirm password is not the same with Password");
         Assert.assertEquals(registerPage.getTextLblErrorMessageForm(), "There're errors in the form. Please correct the errors and try again.");
-        System.out.println("TC10- User can't create account with Confirm password is not the same with Password");
     }
 }

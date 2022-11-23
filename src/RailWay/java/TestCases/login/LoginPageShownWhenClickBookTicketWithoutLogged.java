@@ -20,6 +20,5 @@ public class LoginPageShownWhenClickBookTicketWithoutLogged extends BaseTest {
         generalPage.clickBookTicketTab();
         logger.info("Step #2: Click on Book ticket tab");
         Assert.assertEquals(loginPage.getTextLblLogin(), "Login Page");
-        System.out.println("TC04- Login page displays when un-logged User clicks on Book ticket tab");
     }
 }

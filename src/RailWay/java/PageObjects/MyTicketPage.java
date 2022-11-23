@@ -7,8 +7,9 @@ import org.openqa.selenium.WebElement;
 
 public class MyTicketPage extends GeneralPage {
     // Locator
+    private String strBtnCancel = "//table[@class='MyTable']//input[contains(@onclick,'%s')]";
+
     private final By lblManageTickets = By.xpath("//div[@id='content']/h1[text()='Manage Tickets']");
-    private final By btnCancelTicket = By.xpath("//input[@value='Cancel']");
 
     // Elements
 
@@ -16,15 +17,14 @@ public class MyTicketPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(lblManageTickets);
     }
 
-    private WebElement getBtnCancelButton() {
-        return Constant.WEBDRIVER.findElement(btnCancelTicket);
+    private WebElement getBtnCancelButton(String id) {
+        return Constant.WEBDRIVER.findElement(By.xpath(String.format(strBtnCancel, id)));
     }
-
     //Methods
 
-    public void clickBtnCancelTicket() {
-        Utilities.scrollIntoView(getBtnCancelButton());
-        getBtnCancelButton().click();
+    public void clickBtnCancelTicket(String id) {
+        Utilities.scrollIntoView(getBtnCancelButton(id));
+        getBtnCancelButton(id).click();
     }
 
     public String getTextManageTicket() {
@@ -35,12 +35,13 @@ public class MyTicketPage extends GeneralPage {
         Constant.WEBDRIVER.switchTo().alert().accept();
     }
 
-    public boolean isElementPresent(By locatorKey) {
+    public boolean isElementPresent(String id) {
         try {
-            Constant.WEBDRIVER.findElement(locatorKey);
+            getBtnCancelButton(id);
             return true;
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
     }
+
 }

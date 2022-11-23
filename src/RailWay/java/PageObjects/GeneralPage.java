@@ -70,7 +70,7 @@ public class GeneralPage {
 
     //            Method
     public void clickRegisterTab() {
-        this.getTabRegister().click();
+        getTabRegister().click();
     }
 
     public void clickLoginTab() {
@@ -82,15 +82,15 @@ public class GeneralPage {
     }
 
     public void clickBookTicketTab() {
-        this.getTabBookTicket().click();
+        getTabBookTicket().click();
     }
 
     public void clickTimeTableTab() {
-        this.getTabTimeTable().click();
+        getTabTimeTable().click();
     }
 
     public void clickMyTicketTab() {
-        this.getTabMyTicket().click();
+        getTabMyTicket().click();
     }
 
     public void clickChangePassWordTab() {

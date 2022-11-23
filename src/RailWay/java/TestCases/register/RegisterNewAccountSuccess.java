@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class RegisterNewAccountSuccess extends BaseTest {
     private static final Logger logger = LogManager.getLogger(RegisterNewAccountSuccess.class);
 
-    @Test(dataProvider = "validEmailLength")
+    @Test(dataProvider = "validEmailLength", description = "TC-07: User can create new account")
     public void testRegisterSuccess(int len) {
         Utilities.getLog();
         logger.info("Step #1: Register new account");
@@ -21,10 +21,9 @@ public class RegisterNewAccountSuccess extends BaseTest {
         String password = Utilities.generateRandomString(8);
         String email = Utilities.generateRandomEmail(len);
         String PID = Utilities.generateRandomString(8);
-        registerPage.testRegister(email, password, password, PID);
+        registerPage.register(email, password, password, PID);
         registerPage.clickBtnRegister();
         logger.info("Step #3: Enter valid information into all fields");
         Assert.assertEquals(registerPage.getTextRegisterSuccessMess(), "You're here");
-        System.out.println("TC07- User can create new account");
     }
 }

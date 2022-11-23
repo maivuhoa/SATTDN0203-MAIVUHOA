@@ -1,6 +1,5 @@
 package Common.utilities.listeners;
 
-
 import Common.constant.Constant;
 import Common.utilities.Utilities;
 import Common.utilities.extentreports.ExtentTestManager;
@@ -13,7 +12,6 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import static Common.utilities.extentreports.ExtentManager.getExtentReports;
-
 
 public class ReportListener implements ITestListener {
     private static final Logger logger = LogManager.getLogger(ITestListener.class);
@@ -31,7 +29,6 @@ public class ReportListener implements ITestListener {
 
     @Override
     public void onStart(ITestContext iTestContext) {
-        Utilities.getLog();
         driver = Constant.WEBDRIVER;
         logger.info("Start testing " + iTestContext.getName());
         iTestContext.setAttribute("WebDriver", driver);
@@ -49,6 +46,7 @@ public class ReportListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
+        Utilities.getLog();
         logger.info(getTestName(iTestResult) + " test is starting...");
         ExtentTestManager.saveToReport(iTestResult.getName(), iTestResult.getTestName());
     }

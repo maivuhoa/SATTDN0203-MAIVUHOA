@@ -36,7 +36,7 @@ public class DriverManager {
     }
 
     private static void implicitlyWait() {
-        Constant.WEBDRIVER.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        Constant.WEBDRIVER.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     private static void setupDriver() {

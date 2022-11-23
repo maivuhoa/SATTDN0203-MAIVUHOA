@@ -6,16 +6,16 @@ import org.openqa.selenium.WebElement;
 
 public class HomePage extends GeneralPage {
     // Locator
-    private final By lblWellComeRailWay = By.xpath("//div[@id='content']/h1[text()='Welcome to Safe Railway']");
+    private final By lblWelComeRailWay = By.xpath("//div[@id='content']/h1[text()='Welcome to Safe Railway']");
 
     // Elements
-    protected WebElement getLblWellComeRailWay() {
-        return Constant.WEBDRIVER.findElement(lblWellComeRailWay);
+    protected WebElement getLblWelComeRailWay() {
+        return Constant.WEBDRIVER.findElement(lblWelComeRailWay);
     }
 
     //Methods
-    public String getTextLblWellComeRailWay() {
-        return getLblWellComeRailWay().getText();
+    public String getTextLblWelComeRailWay() {
+        return getLblWelComeRailWay().getText();
     }
 
 }

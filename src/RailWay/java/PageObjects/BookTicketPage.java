@@ -7,11 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class BookTicketPage extends GeneralPage {
-    private String strXPathSelectDropdown = "//div[@id='content']//select[@name='";
-    private String strEndString = "']";
-    private String strDepartDate = "//select[@name='Date']//option[@value='";
-    private String strWideTable = "//table[@class='MyTable WideTable']//td[count(//th[text()='";
-    private String strWideTableSibling = "']/preceding-sibling::th)+1]";
+    private String xPathDropdown = "//div[@id='content']//select[@name='%s']";
+    private String xPathDepartDate = "//select[@name='Date']//option[@value='%s']";
+    private String xPathWideTable = "//table[@class='MyTable WideTable']//td[count(//th[text()='%s']/preceding-sibling::th)+1]";
     private String strDepartFrom = "//div[@id='content']//select[@name='DepartStation']";
     private String strArriveAt = "//div[@id='content']//select[@name='ArriveStation']";
     //Locator
@@ -28,15 +26,15 @@ public class BookTicketPage extends GeneralPage {
     }
 
     private WebElement dynamicLocatorForDropDown(String value) {
-        return Constant.WEBDRIVER.findElement(By.xpath(strFormat(value, strXPathSelectDropdown, strEndString)));
+        return Constant.WEBDRIVER.findElement(By.xpath(formatDropdown(value)));
     }
 
     private WebElement dynamicLocatorForDepartDate(String value) {
-        return Constant.WEBDRIVER.findElement(By.xpath(strFormat(value, strDepartDate, strEndString)));
+        return Constant.WEBDRIVER.findElement(By.xpath(formatDepartDate(value)));
     }
 
     private WebElement dynamicLocatorForTicket(String value) {
-        return Constant.WEBDRIVER.findElement(By.xpath(strFormat(value, strWideTable, strWideTableSibling)));
+        return Constant.WEBDRIVER.findElement(By.xpath(formatWideTable(value)));
     }
 
     private WebElement dynamicLocatorDepartFrom() {
@@ -48,12 +46,16 @@ public class BookTicketPage extends GeneralPage {
     }
 
     //Methods
-    protected String strFormat(String value, String str1, String str2) {
-        return String.format("%1$s" + value + "%2$s", str1, str2);
+    protected String formatDropdown(String value) {
+        return String.format(xPathDropdown, value);
     }
 
-    public WebElement getElementBtnBookTicket() {
-        return getBtnBookTicket();
+    protected String formatDepartDate(String value) {
+        return String.format(xPathDepartDate, value);
+    }
+
+    protected String formatWideTable(String value) {
+        return String.format(xPathWideTable, value);
     }
 
     public String getTextLblBookTicketSuccess() {
@@ -84,17 +86,16 @@ public class BookTicketPage extends GeneralPage {
         return dynamicLocatorForDepartDate(value).getText();
     }
 
-
     public void selectDate(String dateDepart) {
         WebElement element = dynamicLocatorForDropDown("Date");
         Select select = new Select(element);
         select.selectByValue(dateDepart);
     }
 
-    public void selectTicketInfo(String comboBoxName, String Value) {
+    public void selectTicketInfo(String comboBoxName, String value) {
         WebElement element = dynamicLocatorForDropDown(comboBoxName);
         Select select = new Select(element);
-        select.selectByVisibleText(Value);
+        select.selectByVisibleText(value);
     }
 
     public void bookTicketKetSuccess(String SelectDate, String SelectDepartFrom, String SelectArrive, String SeatType, String Amount) {
@@ -106,4 +107,12 @@ public class BookTicketPage extends GeneralPage {
         Utilities.scrollIntoView(getBtnBookTicket());
         getBtnBookTicket().click();
     }
+
+    public String getIDTicket() {
+        String urlTicket = Constant.WEBDRIVER.getCurrentUrl();
+        String[] idUrlTicket = urlTicket.split("=");
+        String idTicket = idUrlTicket[1];
+        return idTicket;
+    }
+
 }

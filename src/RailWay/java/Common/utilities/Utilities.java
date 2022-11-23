@@ -9,8 +9,6 @@ import org.openqa.selenium.WebElement;
 import java.util.Random;
 
 public class Utilities {
-
-
     public static String getProjectPath() {
         return "@../../";
     }

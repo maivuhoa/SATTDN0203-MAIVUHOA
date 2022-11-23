@@ -15,24 +15,24 @@ import org.testng.annotations.Test;
 public class BookTicketSuccess extends BaseTest {
     private static final Logger logger = LogManager.getLogger(BookTicketSuccess.class);
 
-    @Test (description = "TC14 : User can book 1 ticket at a time")
+    @Test(description = "TC14 : User can book 1 ticket at a time")
     public void bookTicketSuccessfully() {
         Utilities.getLog();
         RegisterPage registerPage = new RegisterPage();
-        registerPage.registerNewAccount();
         logger.info("Step #1 : Register new account");
+        registerPage.registerNewAccount();
 
         LoginPage loginPage = new LoginPage();
         loginPage.clickLoginTab();
-        loginPage.loginAccount(registerPage.getEmail(), registerPage.getPassword());
         logger.info("Step #2 : Login with new account");
+        loginPage.loginAccount(registerPage.getEmail(), registerPage.getPassword());
 
         BookTicketPage bookTicketPage = new BookTicketPage();
         bookTicketPage.clickBookTicketTab();
         String departDate = Utilities.randomNumber();
         String departDayValue = bookTicketPage.getValueDateDepart(departDate);
-        bookTicketPage.bookTicketKetSuccess(departDate, Station.SAIGON.getStation(), Station.NHATRANG.getStation(), SeatType.SBWAC.getSeatType(), "1");
         logger.info("Step #3 : Book a ticket");
+        bookTicketPage.bookTicketKetSuccess(departDate, Station.SAIGON.getStation(), Station.NHATRANG.getStation(), SeatType.SBWAC.getSeatType(), "1");
 
         Assert.assertEquals(bookTicketPage.getTextLblBookTicketSuccess(), "Ticket Booked Successfully!");
         Assert.assertEquals(departDayValue, bookTicketPage.getTextInformationTicket("Depart Date"));
