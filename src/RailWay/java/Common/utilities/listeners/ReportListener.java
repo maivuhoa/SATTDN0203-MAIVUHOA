@@ -74,4 +74,5 @@ public class ReportListener implements ITestListener {
         logger.error("Test failed but it is in defined success ratio " + getTestName(iTestResult));
         ExtentTestManager.logMessage("Test failed but it is in defined success ratio " + getTestName(iTestResult));
     }
+
 }

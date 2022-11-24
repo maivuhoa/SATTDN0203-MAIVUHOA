@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class TimeTablePage extends GeneralPage {
-    private String strTimeTable = "//td[text()='%s']/following-sibling::td[text()='%s']/..//a[contains(@href, 'Book')]";
+    private final String strTimeTable = "//td[text()='%s']/following-sibling::td[text()='%s']/..//a[contains(@href, 'Book')]";
     //Locator
     private final By tabTimeTable = By.xpath("//a[@href='TrainTimeListPage.cshtml']");
 

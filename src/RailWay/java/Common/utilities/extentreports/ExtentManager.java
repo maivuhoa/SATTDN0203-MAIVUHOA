@@ -15,4 +15,5 @@ public class ExtentManager {
         extentReports.setSystemInfo("Author", "Anh Tester");
         return extentReports;
     }
+
 }

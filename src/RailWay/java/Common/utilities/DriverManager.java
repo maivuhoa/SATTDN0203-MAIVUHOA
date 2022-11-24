@@ -17,12 +17,10 @@ public class DriverManager {
     }
 
     public static void setupDriver(String browserType) {
-        switch (browserType.trim().toLowerCase()) {
-            case "firefox":
-                initFirefoxDriver();
-                break;
-            default:
-                initChromeDriver();
+        if ("firefox".equals(browserType.trim().toLowerCase())) {
+            initFirefoxDriver();
+        } else {
+            initChromeDriver();
         }
     }
 

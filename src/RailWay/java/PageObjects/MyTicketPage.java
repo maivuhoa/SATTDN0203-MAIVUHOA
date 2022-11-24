@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class MyTicketPage extends GeneralPage {
     // Locator
-    private String strBtnCancel = "//table[@class='MyTable']//input[contains(@onclick,'%s')]";
+    private final String strBtnCancel = "//table[@class='MyTable']//input[contains(@onclick,'%s')]";
 
     private final By lblManageTickets = By.xpath("//div[@id='content']/h1[text()='Manage Tickets']");
 
