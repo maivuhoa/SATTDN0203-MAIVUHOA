@@ -13,6 +13,7 @@ public class LoginPage extends GeneralPage {
     private final By lblValidationErrorEmail = By.xpath("//li[@class='username']/label[@class='validation-error']");
     private final By lblErrorMessageLogin = By.xpath("//div[@id='content']/p[@class='message error LoginForm']");
     private final By lblLoginPage = By.xpath("//div[@id='content']/h1[@align='center']");
+    private final String dynamicTabMenu = "//div[@id='menu']//ul//span[text()='%s']";
 
     // Elements
     private WebElement getTxtUserName() {
@@ -35,10 +36,6 @@ public class LoginPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(lblLoginPage);
     }
 
-    private WebElement getWellComeMes() {
-        return getLblWellComeMessage();
-    }
-
     //  Methods
     public void loginAccount(String username, String PassWord) {
         getTxtUserName().sendKeys(username);
@@ -59,7 +56,11 @@ public class LoginPage extends GeneralPage {
     }
 
     public String getTextWellCome() {
-        return getWellComeMes().getText();
+        return getTextWelcomeMessage();
+    }
+
+    public Boolean isTabDisplayed(String name) {
+        return Constant.WEBDRIVER.findElement(By.xpath(String.format(dynamicTabMenu, name))).isDisplayed();
     }
 
 }

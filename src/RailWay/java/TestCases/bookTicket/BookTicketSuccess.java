@@ -17,21 +17,20 @@ public class BookTicketSuccess extends BaseTest {
 
     @Test(description = "TC14 : User can book 1 ticket at a time")
     public void bookTicketSuccessfully() {
-        Utilities.getLog();
         RegisterPage registerPage = new RegisterPage();
-        logger.info("Step #1 : Register new account");
+        logger.info("Register new account");
         registerPage.registerNewAccount();
 
         LoginPage loginPage = new LoginPage();
         loginPage.clickLoginTab();
-        logger.info("Step #2 : Login with new account");
+        logger.info("Login with new account");
         loginPage.loginAccount(registerPage.getEmail(), registerPage.getPassword());
 
         BookTicketPage bookTicketPage = new BookTicketPage();
         bookTicketPage.clickBookTicketTab();
         String departDate = Utilities.randomNumber();
         String departDayValue = bookTicketPage.getValueDateDepart(departDate);
-        logger.info("Step #3 : Book a ticket");
+        logger.info("Book a ticket");
         bookTicketPage.bookTicketKetSuccess(departDate, Station.SAIGON.getStation(), Station.NHATRANG.getStation(), SeatType.SBWAC.getSeatType(), "1");
 
         Assert.assertEquals(bookTicketPage.getTextLblBookTicketSuccess(), "Ticket Booked Successfully!");

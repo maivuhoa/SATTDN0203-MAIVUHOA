@@ -15,13 +15,11 @@ public class LoginUnSuccessWithInvalidAccount extends BaseTest {
     public void testLoginFailWithInvalidAccount() {
         String email = Utilities.generateRandomEmail(8);
         String password = Utilities.generateRandomString(8);
-        Utilities.getLog();
-        logger.info("Step #1: Navigate to QA Railway Website");
+        logger.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        logger.info("Step #2: Click on Login tab");
+        logger.info("Click on Login tab");
         loginPage.clickLoginTab();
-        logger.info("Step #3: User enter an account which is not registered");
-        logger.info("Step #4: Click on Login button");
+        logger.info("Enter an account which is not registered");
         loginPage.loginAccount(email, password);
         Assert.assertEquals(loginPage.getTextLblErrorMessageLogin(), "Invalid username or password. Please try again.");
     }

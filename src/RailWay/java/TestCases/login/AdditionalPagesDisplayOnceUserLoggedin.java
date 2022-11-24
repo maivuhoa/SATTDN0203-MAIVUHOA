@@ -1,8 +1,9 @@
 package TestCases.login;
 
-import Common.utilities.Utilities;
 import DataObjects.Account;
-import PageObjects.*;
+import PageObjects.ChangePassWordPage;
+import PageObjects.LoginPage;
+import PageObjects.MyTicketPage;
 import TestCases.BaseTest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -14,22 +15,22 @@ public class AdditionalPagesDisplayOnceUserLoggedin extends BaseTest {
 
     @Test(description = "TC06 : Additional pages display once user logged in")
     public void testAdditionalPagesDisplay() {
-        Utilities.getLog();
-        logger.info("Step #1: Navigate to QA Railway Website");
+        logger.info("Login with valid account");
         LoginPage loginPage = new LoginPage();
-        MyTicketPage myTicketPage = new MyTicketPage();
-        HomePage homePage = new HomePage();
-        GeneralPage generalPage = new GeneralPage();
-        ChangePassWordPage changePassWordPage = new ChangePassWordPage();
         loginPage.clickLoginTab();
-        logger.info("Step #2: Click on Login tab");
         loginPage.loginAccount(Account.USERNAME.getAccount(), Account.PASSWORD.getAccount());
-        logger.info("Step #3: Login with valid account");
+
+        MyTicketPage myTicketPage = new MyTicketPage();
+        logger.info("Click My Ticket tab");
         myTicketPage.clickMyTicketTab();
         Assert.assertEquals(myTicketPage.getTextManageTicket(), "Manage Tickets");
+
+        ChangePassWordPage changePassWordPage = new ChangePassWordPage();
+        logger.info("Click Change Password tab");
         changePassWordPage.clickChangePassWordTab();
         Assert.assertEquals(changePassWordPage.getTextLblChangePassWord(), "Change password");
-        generalPage.clickLogoutTab();
-        Assert.assertEquals(homePage.getTextLblWelComeRailWay(), "Welcome to Safe Railway");
+
+        logger.info("Logout page is displayed");
+        Assert.assertTrue(loginPage.isTabDisplayed("Log out"));
     }
 }

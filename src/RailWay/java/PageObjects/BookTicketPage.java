@@ -26,7 +26,7 @@ public class BookTicketPage extends GeneralPage {
     }
 
     private WebElement dynamicLocatorForDropDown(String value) {
-        return Constant.WEBDRIVER.findElement(By.xpath(formatDropdown(value)));
+        return Constant.WEBDRIVER.findElement(By.xpath(String.format(xPathDropdown, value)));
     }
 
     private WebElement dynamicLocatorForDepartDate(String value) {
@@ -37,19 +37,15 @@ public class BookTicketPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(By.xpath(formatWideTable(value)));
     }
 
-    private WebElement dynamicLocatorDepartFrom() {
+    private WebElement locatorDepartFrom() {
         return Constant.WEBDRIVER.findElement(By.xpath(strDepartFrom));
     }
 
-    private WebElement dynamicLocatorArriveAt() {
+    private WebElement locatorArriveAt() {
         return Constant.WEBDRIVER.findElement(By.xpath(strArriveAt));
     }
 
     //Methods
-    protected String formatDropdown(String value) {
-        return String.format(xPathDropdown, value);
-    }
-
     protected String formatDepartDate(String value) {
         return String.format(xPathDepartDate, value);
     }
@@ -67,11 +63,11 @@ public class BookTicketPage extends GeneralPage {
     }
 
     public Select getValueDepartFrom() {
-        return new Select(dynamicLocatorDepartFrom());
+        return new Select(locatorDepartFrom());
     }
 
     public Select getValueArriveAt() {
-        return new Select(dynamicLocatorArriveAt());
+        return new Select(locatorArriveAt());
     }
 
     public String getSelectedDepartFrom() {

@@ -20,51 +20,51 @@ public class GeneralPage {
     private final By tabLogout = By.xpath("//a[@href='/Account/Logout']");
 
     //           Elements
-    protected WebElement getTabHome() {
+    private WebElement getTabHome() {
         return Constant.WEBDRIVER.findElement(tabHome);
     }
 
-    protected WebElement getTabFAQ() {
+    private WebElement getTabFAQ() {
         return Constant.WEBDRIVER.findElement(tabFAQ);
     }
 
-    protected WebElement getTabContact() {
+    private WebElement getTabContact() {
         return Constant.WEBDRIVER.findElement(tabContact);
     }
 
-    protected WebElement getTabTimeTable() {
+    private WebElement getTabTimeTable() {
         return Constant.WEBDRIVER.findElement(tabTimeTable);
     }
 
-    protected WebElement getTabTicketPrice() {
+    private WebElement getTabTicketPrice() {
         return Constant.WEBDRIVER.findElement(tabTicketPrice);
     }
 
-    protected WebElement getTabBookTicket() {
+    private WebElement getTabBookTicket() {
         return Constant.WEBDRIVER.findElement(tabBookTicket);
     }
 
-    protected WebElement getTabRegister() {
+    private WebElement getTabRegister() {
         return Constant.WEBDRIVER.findElement(tabRegister);
     }
 
-    protected WebElement getTabLogin() {
+    private WebElement getTabLogin() {
         return Constant.WEBDRIVER.findElement(tabLogin);
     }
 
-    protected WebElement getLblWellComeMessage() {
+    private WebElement getLblWellComeMessage() {
         return Constant.WEBDRIVER.findElement(lblWelComeMessage);
     }
 
-    protected WebElement getTabMyTicket() {
+    private WebElement getTabMyTicket() {
         return Constant.WEBDRIVER.findElement(tabMyTicket);
     }
 
-    protected WebElement getTabChangePassWord() {
+    private WebElement getTabChangePassWord() {
         return Constant.WEBDRIVER.findElement(tabChangePassWord);
     }
 
-    protected WebElement getTabLogout() {
+    private WebElement getTabLogout() {
         return Constant.WEBDRIVER.findElement(tabLogout);
     }
 
@@ -95,6 +95,10 @@ public class GeneralPage {
 
     public void clickChangePassWordTab() {
         getTabChangePassWord().click();
+    }
+
+    public String getTextWelcomeMessage() {
+        return getLblWellComeMessage().getText();
     }
 
 }

@@ -14,13 +14,11 @@ public class LoginUnSuccessWithInvalidPassword extends BaseTest {
 
     @Test(description = "TC-03: User cannot log into Railway with invalid password ")
     public void testLoginFailWithInValidPassword() {
-        Utilities.getLog();
-        logger.info("Step #1: Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
+        logger.info("Click on Login tab");
         loginPage.clickLoginTab();
-        logger.info("Step #2: Click on Login tab");
+        logger.info("Login with valid Email and invalid Password");
         loginPage.loginAccount(Account.USERNAME.getAccount(), Utilities.generateRandomStringWithSpecialCharacter(8));
-        logger.info("Step #3: Login with valid Email and invalid Password");
         Assert.assertEquals(loginPage.getTextLblErrorMessageLogin(), "Invalid username or password. Please try again.");
     }
 }

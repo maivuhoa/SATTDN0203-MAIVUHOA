@@ -14,16 +14,14 @@ public class TestEnterWrongPasswordSeveralTime extends BaseTest {
 
     @Test(description = "TC-05: System shows message when user enters wrong password several times")
     public void testEnterWrongPasswordSeveralTime() {
-        Utilities.getLog();
-        logger.info("Step #1: Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
         String wrongPassword = Utilities.generateRandomString(8);
+        logger.info("Click on Login tab");
         loginPage.clickLoginTab();
-        logger.info("Step #2: Click on Login tab");
+        logger.info("Enter valid information into Username textbox except Password textbox.");
         for (int i = 0; i < 4; i++) {
             loginPage.loginAccount(Account.USERNAME.getAccount(), wrongPassword);
         }
-        logger.info("Step #3: Enter valid information into Username textbox except Password textbox.");
-        Assert.assertEquals(loginPage.getTextLblErrorMessageLogin(), "You have used 4 out of 5 login attempts. After all 5 have been used, you will be unable to login for 15 minutes.");
+        Assert.assertEquals(loginPage.getTextLblErrorMessageLogin(), "Invalid username or password. Please try again.");
     }
 }

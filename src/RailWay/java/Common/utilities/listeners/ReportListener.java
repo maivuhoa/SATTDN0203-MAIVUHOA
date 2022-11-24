@@ -1,7 +1,6 @@
 package Common.utilities.listeners;
 
 import Common.constant.Constant;
-import Common.utilities.Utilities;
 import Common.utilities.extentreports.ExtentTestManager;
 import com.aventstack.extentreports.Status;
 import org.apache.log4j.LogManager;
@@ -37,7 +36,6 @@ public class ReportListener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-        Utilities.getLog();
         logger.info("End testing " + iTestContext.getName());
         //Kết thúc và thực thi Extents Report
         getExtentReports().flush();
@@ -46,7 +44,6 @@ public class ReportListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
-        Utilities.getLog();
         logger.info(getTestName(iTestResult) + " test is starting...");
         ExtentTestManager.saveToReport(iTestResult.getName(), iTestResult.getTestName());
     }

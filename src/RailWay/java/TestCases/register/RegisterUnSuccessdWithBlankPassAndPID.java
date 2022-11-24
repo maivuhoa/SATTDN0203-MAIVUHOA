@@ -13,16 +13,13 @@ public class RegisterUnSuccessdWithBlankPassAndPID extends BaseTest {
 
     @Test(description = "TC-11: User can't create account while password and PID fields are empty")
     public void testRegisterUnSuccessWithBlankPassAndPID() {
-        Utilities.getLog();
-        logger.info("Step #1: Navigate to QA Railway Website");
         RegisterPage registerPage = new RegisterPage();
+        logger.info("Click on Register tab");
         registerPage.clickRegisterTab();
-        logger.info("Step #2: Click on Register tab");
         String email = Utilities.generateRandomEmail(10);
         String confirmPass = Utilities.generateRandomString(10);
+        logger.info("Enter valid email address and leave other fields empty");
         registerPage.register(email, "", confirmPass, "");
-        logger.info("Step #3: Enter valid email address and leave other fields empty");
-        logger.info("Step #4: Click on Register button");
         Assert.assertEquals(registerPage.getTextLblErrorMessageForm(), "There're errors in the form. Please correct the errors and try again.");
     }
 }

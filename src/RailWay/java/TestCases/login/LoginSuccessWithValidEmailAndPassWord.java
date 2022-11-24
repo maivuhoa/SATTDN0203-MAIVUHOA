@@ -1,6 +1,5 @@
 package TestCases.login;
 
-import Common.utilities.Utilities;
 import DataObjects.Account;
 import PageObjects.LoginPage;
 import TestCases.BaseTest;
@@ -14,14 +13,12 @@ public class LoginSuccessWithValidEmailAndPassWord extends BaseTest {
 
     @Test(description = "TC01 : User can log into Railway with valid username and password")
     public void testLoginSuccessWithValidAccount() {
-        Utilities.getLog();
-        logger.info("Step #1: Navigate to QA Railway Website");
+        logger.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
         loginPage.clickLoginTab();
-        logger.info("Step #2: Click on Login tab");
+        logger.info("Click on Login tab");
         loginPage.loginAccount(Account.USERNAME.getAccount(), Account.PASSWORD.getAccount());
-        logger.info("Step #3: Enter valid Email and Password");
-        logger.info("Step #4: Click on Login button");
+        logger.info("Login with valid Email and Password");
         Assert.assertEquals(loginPage.getTextWellCome(), "Welcome " + Account.USERNAME.getAccount());
     }
 }

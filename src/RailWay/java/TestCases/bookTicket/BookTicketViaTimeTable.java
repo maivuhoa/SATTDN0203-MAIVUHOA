@@ -1,6 +1,5 @@
 package TestCases.bookTicket;
 
-import Common.utilities.Utilities;
 import PageObjects.BookTicketPage;
 import PageObjects.LoginPage;
 import PageObjects.RegisterPage;
@@ -16,20 +15,23 @@ public class BookTicketViaTimeTable extends BaseTest {
 
     @Test(description = "TC15 : User can open Book ticket page by clicking on Book ticket link in Train timetable page")
     public void testBookTicketViaTimetable() {
-        Utilities.getLog();
         RegisterPage registerPage = new RegisterPage();
         logger.info("Register a new account");
         registerPage.registerNewAccount();
+
         LoginPage loginPage = new LoginPage();
-        TimeTablePage timeTablePage = new TimeTablePage();
-        BookTicketPage bookTicketPage = new BookTicketPage();
-        loginPage.clickLoginTab();
         logger.info("Log in with new account");
+        loginPage.clickLoginTab();
         loginPage.loginAccount(registerPage.getEmail(), registerPage.getPassword());
+
+
+        TimeTablePage timeTablePage = new TimeTablePage();
         logger.info("Click on Timetable tab");
         timeTablePage.clickTimeTableTab();
-        logger.info("Click on book ticket link of the route from Huế to Sài Gòn");
         timeTablePage.selectDepartFromAndArrive();
+
+        BookTicketPage bookTicketPage = new BookTicketPage();
+        logger.info("Click on book ticket link of the route from Huế to Sài Gòn");
         Assert.assertEquals(bookTicketPage.getSelectedDepartFrom(), "Huế");
         Assert.assertEquals(bookTicketPage.getSelectedArriveAt(), "Sài Gòn");
     }

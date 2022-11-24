@@ -31,10 +31,6 @@ public class MyTicketPage extends GeneralPage {
         return getLblManageTickets().getText();
     }
 
-    public void acceptOKCancel() {
-        Constant.WEBDRIVER.switchTo().alert().accept();
-    }
-
     public boolean isElementPresent(String id) {
         try {
             getBtnCancelButton(id);

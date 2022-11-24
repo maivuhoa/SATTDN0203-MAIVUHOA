@@ -65,4 +65,8 @@ public class DriverManager {
         Constant.WEBDRIVER.quit();
     }
 
+    public static void acceptAlert() {
+        Constant.WEBDRIVER.switchTo().alert().accept();
+    }
+
 }
