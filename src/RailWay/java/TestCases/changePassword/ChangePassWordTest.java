@@ -1,50 +1,38 @@
 package TestCases.changePassword;
 
 import Common.utilities.Utilities;
-import Common.constant.Constant;
-import PageObjects.*;
-import TestCases.SetUpBaseTest;
-import org.testng.Assert;
-import org.testng.annotations.*;
+import PageObjects.ChangePassWordPage;
+import PageObjects.LoginPage;
+import PageObjects.RegisterPage;
+import TestCases.BaseTest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-public class ChangePassWordTest extends SetUpBaseTest {
+public class ChangePassWordTest extends BaseTest {
     private static final Logger logger = LogManager.getLogger(ChangePassWordTest.class);
 
-    @BeforeMethod
-    public void setup() {
-        super.beforeTest();
-    }
-
-    @Test
+    @Test(description = "TC09 : User can change password")
     public void testChangePassWordSuccess() {
         String password = Utilities.generateRandomString(8);
         String email = Utilities.generateRandomEmail(10);
         String pid = Utilities.generateRandomString(10);
         String newPassword = Utilities.generateRandomString(8);
         RegisterPage registerPage = new RegisterPage();
-        registerPage.gotoRegisterPage();
-        Utilities.getLog();
-        registerPage.testRegister(email, password, password, pid);
-        logger.info("Step #1: Register new account");
-        LoginPage loginPage = new LoginPage();
-        loginPage.gotoLoginPage();
-        logger.info("Step #2: Navigate to Login page");
-        loginPage.testLogin(email, password);
-        loginPage.getBtnLogin().click();
-        logger.info("Step #3: Login with new account");
-        ChangePassWordPage changePassWordPage = new ChangePassWordPage();
-        changePassWordPage.gotoTabChangePassWord();
-        logger.info("Step #4: Navigate to Change Password page");
-        changePassWordPage.changePass(password, newPassword, newPassword);
-        logger.info("Step #5: Change password");
-        Assert.assertEquals(changePassWordPage.getMessageSuccessChangePass().getText(), "Your password has been updated!");
-        System.out.println("TC09- User can change password");
-    }
+        logger.info("Register new account");
+        registerPage.clickRegisterTab();
+        registerPage.register(email, password, password, pid);
 
-    @AfterMethod
-    public void afterMethod() {
-        super.afterTest();
+        LoginPage loginPage = new LoginPage();
+        logger.info("Login with new account");
+        loginPage.clickLoginTab();
+        loginPage.loginAccount(email, password);
+
+        ChangePassWordPage changePassWordPage = new ChangePassWordPage();
+        logger.info("Change password");
+        changePassWordPage.clickChangePassWordTab();
+        changePassWordPage.changePass(password, newPassword, newPassword);
+        Assert.assertEquals(changePassWordPage.getTextChangePassSuccess(), "Your password has been updated!");
     }
 }

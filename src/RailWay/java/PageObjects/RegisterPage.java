@@ -3,73 +3,86 @@ package PageObjects;
 import Common.constant.Constant;
 import Common.utilities.Utilities;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class RegisterPage extends GeneralPage {
+    private String email;
+    private String password;
     //Locator
-    private final By inpEmail = By.xpath("//li//input[@id='email']");
-    private final By inpPassword = By.xpath("//li//input[@id='password']");
-    private final By inpConfirmPassword = By.xpath("//li//input[@id='confirmPassword']");
-    private final By inpPID = By.xpath("//li//input[@id='pid']");
+    private final By txtEmail = By.xpath("//li//input[@id='email']");
+    private final By txtPassword = By.xpath("//li//input[@id='password']");
+    private final By txtConfirmPassword = By.xpath("//li//input[@id='confirmPassword']");
+    private final By txtPID = By.xpath("//li//input[@id='pid']");
     private final By btnRegister = By.xpath("//p[@class='form-actions']/input[@type='submit']");
     private final By lblRegisterSuccess = By.xpath("//div[@id='content']/p");
-    private final By lblWebHostingBy = By.xpath("//center/a[@href=\"http://somee.com\"]");
-    private final By lblErrorEmail = By.xpath("//label[text()='Invalid email length']");
-    private final By lblErrorPassNotMatch = By.xpath("//form[@id='RegisterForm']//label[@class='validation-error']");
-    private final By paErrorMessageForm = By.xpath("//div[@id='content']//p[@class='message error']");
+    private final By lblErrorMessageForm = By.xpath("//div[@id='content']//p[@class='message error']");
 
     //Elements
-    public WebElement getInpEmail() {
-        return Constant.WEBDRIVER.findElement(inpEmail);
+    private WebElement getTxtEmail() {
+        return Constant.WEBDRIVER.findElement(txtEmail);
     }
 
-    public WebElement getInpPassword() {
-        return Constant.WEBDRIVER.findElement(inpPassword);
+    private WebElement getTxtPassword() {
+        return Constant.WEBDRIVER.findElement(txtPassword);
     }
 
-    public WebElement getInpConfirmPassword() {
-        return Constant.WEBDRIVER.findElement(inpConfirmPassword);
+    private WebElement getTxtConfirmPassword() {
+        return Constant.WEBDRIVER.findElement(txtConfirmPassword);
     }
 
-    public WebElement getInpPID() {
-        return Constant.WEBDRIVER.findElement(inpPID);
+    private WebElement getTxtPID() {
+        return Constant.WEBDRIVER.findElement(txtPID);
     }
 
-    public WebElement getlblErrorPassNotMatch() {
-        return Constant.WEBDRIVER.findElement(lblErrorPassNotMatch);
+    private WebElement getLblErrorMessageForm() {
+        return Constant.WEBDRIVER.findElement(lblErrorMessageForm);
     }
 
-    public WebElement getpaErrorMessageForm() {
-        return Constant.WEBDRIVER.findElement(paErrorMessageForm);
-    }
-
-    public WebElement getBtnRegister() {
+    private WebElement getBtnRegister() {
         return Constant.WEBDRIVER.findElement(btnRegister);
     }
 
-    public WebElement getLblErrorEmail() {
-        return Constant.WEBDRIVER.findElement(lblErrorEmail);
-    }
-
-    public WebElement getRegisterSuccessMess() {
+    private WebElement getRegisterSuccessMess() {
         return Constant.WEBDRIVER.findElement(lblRegisterSuccess);
     }
 
-    public WebElement getLblWebHostingBy() {
-        return Constant.WEBDRIVER.findElement(lblWebHostingBy);
+    //Methods
+    public void register(String UserName, String Password, String ConfirmPassword, String PID) {
+        getTxtEmail().sendKeys(UserName);
+        getTxtPassword().sendKeys(Password);
+        getTxtConfirmPassword().sendKeys(ConfirmPassword);
+        getTxtPID().sendKeys(PID);
+        Utilities.scrollIntoView(getBtnRegister());
+        getBtnRegister().click();
     }
 
-    //Methods
-    JavascriptExecutor js;
+    public String getTextLblErrorMessageForm() {
+        return getLblErrorMessageForm().getText();
+    }
 
-    public void testRegister(String UserName, String Password, String ConfirmPassword, String PID) {
-        getInpEmail().sendKeys(UserName);
-        getInpPassword().sendKeys(Password);
-        getInpConfirmPassword().sendKeys(ConfirmPassword);
-        getInpPID().sendKeys(PID);
-        Utilities.scrollIntoView(getBtnRegister());
+    public String getTextRegisterSuccessMess() {
+        return getRegisterSuccessMess().getText();
+    }
+
+    public void clickBtnRegister() {
+        getBtnRegister().click();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void registerNewAccount() {
+        password = Utilities.generateRandomString(8);
+        email = Utilities.generateRandomEmail(10);
+        String newPID = Utilities.generateRandomString(10);
+        RegisterPage registerPage = new RegisterPage();
+        registerPage.clickRegisterTab();
+        registerPage.register(email, password, password, newPID);
     }
 
 }

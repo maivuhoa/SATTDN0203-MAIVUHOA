@@ -1,9 +1,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite" verbose="1">
+    <listeners>
+        <listener class-name="Common.utilities.listeners.ReportListener"></listener>
+    </listeners>
     <test name="FirstTest">
-        <classes>
-            <class name="TestCases.changePassword.ChangePassWordTest"/>
-        </classes>
+        <packages>
+            <package name="TestCases.bookTicket"></package>
+            <package name="TestCases.cancelTicket"></package>
+            <package name="TestCases.login"></package>
+            <package name="TestCases.changePassword"></package>
+            <package name="TestCases.register"></package>
+        </packages>
     </test>
 </suite>

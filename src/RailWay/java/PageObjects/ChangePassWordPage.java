@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 
 public class ChangePassWordPage extends GeneralPage {
     //Locator
-    private final By tabChangePassWord = By.xpath("//a[@href='/Account/ChangePassword.cshtml']");
     private final By txtCurrentPassWord = By.xpath("//li[@class='current-password']/input[@id='currentPassword']");
     private final By txtNewPassWord = By.xpath("//li[@class='new-password']/input[@id='newPassword']");
     private final By txtConfirmPassWord = By.xpath("//li[@class='confirm-password']/input[@id='confirmPassword']");
@@ -15,37 +14,37 @@ public class ChangePassWordPage extends GeneralPage {
     private final By lblChangePassword = By.xpath("//h1[text()='Change password']");
 
     //Elements
-    public WebElement getTabChangePassWord() {
-        return Constant.WEBDRIVER.findElement(tabChangePassWord);
-    }
-
-    public WebElement getTxtCurrentPassWord() {
+    private WebElement getTxtCurrentPassWord() {
         return Constant.WEBDRIVER.findElement(txtCurrentPassWord);
     }
 
-    public WebElement getTxtNewPassWord() {
+    private WebElement getTxtNewPassWord() {
         return Constant.WEBDRIVER.findElement(txtNewPassWord);
     }
 
-    public WebElement getTxtConfirmPassWord() {
+    private WebElement getTxtConfirmPassWord() {
         return Constant.WEBDRIVER.findElement(txtConfirmPassWord);
     }
 
-    public WebElement getBtnChangePassWord() {
+    private WebElement getBtnChangePassWord() {
         return Constant.WEBDRIVER.findElement(btnChangePassWord);
     }
 
-    public WebElement getMessageSuccessChangePass() {
+    private WebElement getMessageSuccessChangePass() {
         return Constant.WEBDRIVER.findElement(lblSuccessChangePass);
     }
 
-    public WebElement getLblChangePassword() {
+    private WebElement getLblChangePassword() {
         return Constant.WEBDRIVER.findElement(lblChangePassword);
     }
 
     //Methods
-    public void gotoTabChangePassWord() {
-        getTabChangePassWord().click();
+    public String getTextChangePassSuccess() {
+        return getMessageSuccessChangePass().getText();
+    }
+
+    public String getTextLblChangePassWord() {
+        return getLblChangePassword().getText();
     }
 
     public void changePass(String currentPass, String newPass, String confirmPass) {

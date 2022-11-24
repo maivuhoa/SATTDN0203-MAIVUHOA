@@ -1,40 +1,24 @@
 package TestCases.login;
 
 import Common.utilities.Utilities;
-import PageObjects.*;
-import Common.constant.Constant;
-import TestCases.SetUpBaseTest;
+import DataObjects.Account;
+import PageObjects.LoginPage;
+import TestCases.BaseTest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
-public class LoginUnSuccessWithInvalidPassword extends SetUpBaseTest {
+public class LoginUnSuccessWithInvalidPassword extends BaseTest {
     private static final Logger logger = LogManager.getLogger(LoginUnSuccessWithInvalidPassword.class);
 
-
-    @BeforeMethod
-    public void beforeTesting() {
-        super.beforeTest();
-    }
-
-    @Test()
+    @Test(description = "TC-03: User cannot log into Railway with invalid password ")
     public void testLoginFailWithInValidPassword() {
-        Utilities.getLog();
-        logger.info("Step #1: Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        loginPage.getTabLogin().click();
-        logger.info("Step #2: Click on Login tab");
-        loginPage.testLogin(Constant.LOGIN_USERNAME, Utilities.generateRandomStringWithSpecialCharacter(8));
-        logger.info("Step #3: Enter valid Email and invalid Password");
-        loginPage.getBtnLogin().click();
-        logger.info("Step #4: Click on Login button");
-        Assert.assertEquals(loginPage.getPErrorMessageLogin().getText(), "Invalid username or password. Please try again.");
-        System.out.println("TC03- User cannot log into Railway with invalid password ");
-    }
-
-    @AfterMethod
-    public void afterTesting() {
-        super.afterTest();
+        logger.info("Click on Login tab");
+        loginPage.clickLoginTab();
+        logger.info("Login with valid Email and invalid Password");
+        loginPage.loginAccount(Account.USERNAME.getAccount(), Utilities.generateRandomStringWithSpecialCharacter(8));
+        Assert.assertEquals(loginPage.getTextLblErrorMessageLogin(), "Invalid username or password. Please try again.");
     }
 }

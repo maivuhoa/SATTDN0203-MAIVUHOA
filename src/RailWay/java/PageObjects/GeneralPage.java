@@ -15,51 +15,90 @@ public class GeneralPage {
     private final By tabRegister = By.xpath("//a[@href='/Account/Register.cshtml']");
     private final By tabLogin = By.xpath("//a[@href='/Account/Login.cshtml']");
     private final By lblWelComeMessage = By.xpath("//div[@class='account']/strong");
+    private final By tabMyTicket = By.xpath("//a[@href='/Page/ManageTicket.cshtml']");
+    private final By tabChangePassWord = By.xpath("//a[@href='/Account/ChangePassword.cshtml']");
+    private final By tabLogout = By.xpath("//a[@href='/Account/Logout']");
+
     //           Elements
-    protected WebElement getTabHome() {
+    private WebElement getTabHome() {
         return Constant.WEBDRIVER.findElement(tabHome);
     }
 
-    protected WebElement getTabFAQ() {
+    private WebElement getTabFAQ() {
         return Constant.WEBDRIVER.findElement(tabFAQ);
     }
 
-    protected WebElement getTabContact() {
+    private WebElement getTabContact() {
         return Constant.WEBDRIVER.findElement(tabContact);
     }
 
-    protected WebElement getTabTimeTable() {
+    private WebElement getTabTimeTable() {
         return Constant.WEBDRIVER.findElement(tabTimeTable);
     }
 
-    protected WebElement getTabTicketPrice() {
+    private WebElement getTabTicketPrice() {
         return Constant.WEBDRIVER.findElement(tabTicketPrice);
     }
 
-    protected WebElement getTabBookTicket() {
+    private WebElement getTabBookTicket() {
         return Constant.WEBDRIVER.findElement(tabBookTicket);
     }
 
-    protected WebElement getTabRegister() {
+    private WebElement getTabRegister() {
         return Constant.WEBDRIVER.findElement(tabRegister);
     }
 
-    protected WebElement getTabLogin() {
+    private WebElement getTabLogin() {
         return Constant.WEBDRIVER.findElement(tabLogin);
     }
 
-    protected WebElement getLblWellComeMessage() {
+    private WebElement getLblWellComeMessage() {
         return Constant.WEBDRIVER.findElement(lblWelComeMessage);
     }
 
-    //            Method
-    public static String tabMenu="div[@id='content']//select[@name='";
-
-    public void gotoRegisterPage() {
-        this.getTabRegister().click();
+    private WebElement getTabMyTicket() {
+        return Constant.WEBDRIVER.findElement(tabMyTicket);
     }
-    public void gotoLoginPage(){this.getTabLogin().click();}
-    public void gotoBookTicketPage(){this.getTabBookTicket().click();}
 
+    private WebElement getTabChangePassWord() {
+        return Constant.WEBDRIVER.findElement(tabChangePassWord);
+    }
+
+    private WebElement getTabLogout() {
+        return Constant.WEBDRIVER.findElement(tabLogout);
+    }
+
+    //            Method
+    public void clickRegisterTab() {
+        getTabRegister().click();
+    }
+
+    public void clickLoginTab() {
+        getTabLogin().click();
+    }
+
+    public void clickLogoutTab() {
+        getTabLogout().click();
+    }
+
+    public void clickBookTicketTab() {
+        getTabBookTicket().click();
+    }
+
+    public void clickTimeTableTab() {
+        getTabTimeTable().click();
+    }
+
+    public void clickMyTicketTab() {
+        getTabMyTicket().click();
+    }
+
+    public void clickChangePassWordTab() {
+        getTabChangePassWord().click();
+    }
+
+    public String getTextWelcomeMessage() {
+        return getLblWellComeMessage().getText();
+    }
 
 }
