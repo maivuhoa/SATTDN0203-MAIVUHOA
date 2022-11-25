@@ -41,8 +41,13 @@ public class Utilities {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static String randomNumber() {
-        int randomDate = 3 + (int) (Math.random() * (30 - 4) + 1);
-        return Integer.toString(randomDate);
+    public static String randomNumber(int min,int max) {
+        if (min >= max) {
+            throw new IllegalArgumentException("max must be greater than min");
+        }
+
+        Random r = new Random();
+        return String.valueOf(r.nextInt((max - min) + 1) + min);
+
     }
 }
