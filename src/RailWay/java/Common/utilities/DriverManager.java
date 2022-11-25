@@ -17,7 +17,7 @@ public class DriverManager {
     }
 
     public static void setupDriver(String browserType) {
-        if ("firefox".equals(browserType.trim().toLowerCase())) {
+        if ("firefox".equalsIgnoreCase(browserType.trim())) {
             initFirefoxDriver();
         } else {
             initChromeDriver();

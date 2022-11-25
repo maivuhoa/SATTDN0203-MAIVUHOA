@@ -1,8 +1,6 @@
 package PageObjects;
 
-import Common.constant.Constant;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class ChangePassWordPage extends GeneralPage {
     //Locator
@@ -12,46 +10,4 @@ public class ChangePassWordPage extends GeneralPage {
     private final By btnChangePassWord = By.xpath("//p[@class='form-actions']/input[@type='submit']");
     private final By lblSuccessChangePass = By.xpath("//form[@id='ChangePW']//p[@class='message success']");
     private final By lblChangePassword = By.xpath("//h1[text()='Change password']");
-
-    //Elements
-    private WebElement getTxtCurrentPassWord() {
-        return Constant.WEBDRIVER.findElement(txtCurrentPassWord);
-    }
-
-    private WebElement getTxtNewPassWord() {
-        return Constant.WEBDRIVER.findElement(txtNewPassWord);
-    }
-
-    private WebElement getTxtConfirmPassWord() {
-        return Constant.WEBDRIVER.findElement(txtConfirmPassWord);
-    }
-
-    private WebElement getBtnChangePassWord() {
-        return Constant.WEBDRIVER.findElement(btnChangePassWord);
-    }
-
-    private WebElement getMessageSuccessChangePass() {
-        return Constant.WEBDRIVER.findElement(lblSuccessChangePass);
-    }
-
-    private WebElement getLblChangePassword() {
-        return Constant.WEBDRIVER.findElement(lblChangePassword);
-    }
-
-    //Methods
-    public String getTextChangePassSuccess() {
-        return getMessageSuccessChangePass().getText();
-    }
-
-    public String getTextLblChangePassWord() {
-        return getLblChangePassword().getText();
-    }
-
-    public void changePass(String currentPass, String newPass, String confirmPass) {
-        getTxtCurrentPassWord().sendKeys(currentPass);
-        getTxtNewPassWord().sendKeys(newPass);
-        getTxtConfirmPassWord().sendKeys(confirmPass);
-        getBtnChangePassWord().click();
-    }
-
 }

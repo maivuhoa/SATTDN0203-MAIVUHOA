@@ -12,7 +12,6 @@ public class ConfigFileReader {
     private final Properties properties;
     private final String propertyFilePath = Utilities.getProjectPath() + "//src/RailWay/resources/configuration.properties";
 
-
     public ConfigFileReader() {
         BufferedReader reader;
         try {
